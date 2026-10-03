@@ -2,3936 +2,3023 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Fit30 - 30-Day Weight Loss</title>
-
-    <style>
-
-        /* =========================================================
-           FIT30 — BLACK + STRONG GREEN THEME
-        ========================================================= */
-
-        :root {
-            --black: #020402;
-            --black-2: #050905;
-            --black-3: #081008;
-            --card: #0b130d;
-            --card-2: #0f1b12;
-
-            --green: #00ff66;
-            --green-2: #00e65c;
-            --green-3: #39ff88;
-            --green-dark: #00a83f;
-
-            --white: #f5fff8;
-            --text: #e8f7ed;
-            --muted: #8ca596;
-
-            --border: rgba(0, 255, 102, 0.18);
-            --border-strong: rgba(0, 255, 102, 0.55);
-
-            --glow:
-                0 0 10px rgba(0, 255, 102, 0.35),
-                0 0 30px rgba(0, 255, 102, 0.16);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fit30 - 30-Day Weight Loss</title>
+
+<style>
+
+/* =========================================================
+   FIT30 — BLACK + STRONG GREEN THEME
+========================================================= */
+
+:root {
+    --black:#020402;
+    --black-2:#050905;
+    --black-3:#081008;
+    --card:#0b130d;
+    --card-2:#0f1b12;
+
+    --green:#00ff66;
+    --green-2:#00e65c;
+    --green-3:#39ff88;
+    --green-dark:#00a83f;
+
+    --white:#f5fff8;
+    --text:#e8f7ed;
+    --muted:#8ca596;
+
+    --border:rgba(0,255,102,.18);
+    --border-strong:rgba(0,255,102,.55);
+
+    --glow:
+        0 0 10px rgba(0,255,102,.35),
+        0 0 30px rgba(0,255,102,.16);
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.65);
+}
+
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    min-height:100vh;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color:var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(0,255,102,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(0,255,102,.07),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #010201,
+            #050905 45%,
+            #020502
+        );
+
+    overflow-x:hidden;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(
+            rgba(0,255,102,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,255,102,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:45px 45px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
 
-            --shadow:
-                0 20px 60px rgba(0, 0, 0, 0.65);
-        }
-
+    z-index:0;
+}
+
+button,
+input {
+    font:inherit;
+}
 
-        /* =========================================================
-           RESET
-        ========================================================= */
+button {
+    cursor:pointer;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+::selection {
+    background:var(--green);
+    color:#001b08;
+}
 
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
-        html {
-            scroll-behavior: smooth;
-        }
+::-webkit-scrollbar {
+    width:9px;
+}
 
+::-webkit-scrollbar-track {
+    background:#020402;
+}
 
-        body {
-            min-height: 100vh;
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            var(--green),
+            var(--green-dark)
+        );
 
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
+    border-radius:20px;
 
-            color: var(--text);
+    box-shadow:
+        0 0 10px rgba(0,255,102,.5);
+}
 
-            background:
-                radial-gradient(
-                    circle at 15% 10%,
-                    rgba(0, 255, 102, 0.10),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 85% 30%,
-                    rgba(0, 255, 102, 0.07),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #010201,
-                    #050905 45%,
-                    #020502
-                );
+/* =========================================================
+   APP
+========================================================= */
 
-            overflow-x: hidden;
-        }
+.app {
+    position:relative;
+    z-index:1;
 
+    width:min(1180px,100%);
+    margin:0 auto;
 
-        body::before {
-            content: "";
+    padding:0 22px 70px;
+}
 
-            position: fixed;
-            inset: 0;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            pointer-events: none;
+.header {
+    position:sticky;
+    top:0;
+    z-index:100;
 
-            background-image:
-                linear-gradient(
-                    rgba(0, 255, 102, 0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0, 255, 102, 0.025) 1px,
-                    transparent 1px
-                );
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-            background-size: 45px 45px;
+    min-height:76px;
+    padding:15px 0;
 
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 85%
-                );
+    background:
+        rgba(2,4,2,.88);
 
-            z-index: 0;
-        }
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
+    border-bottom:
+        1px solid rgba(0,255,102,.10);
+}
 
-        button,
-        input {
-            font: inherit;
-        }
+.logo {
+    position:relative;
 
+    font-size:29px;
+    font-weight:950;
+    letter-spacing:-1.5px;
 
-        button {
-            cursor: pointer;
-        }
+    color:#fff;
 
+    text-shadow:
+        0 0 15px rgba(255,255,255,.08);
+}
 
-        ::selection {
-            background: var(--green);
-            color: #001b08;
-        }
+.logo span {
+    color:var(--green);
 
+    text-shadow:
+        0 0 8px var(--green),
+        0 0 25px rgba(0,255,102,.55);
+}
 
-        /* =========================================================
-           SCROLLBAR
-        ========================================================= */
+.logo::after {
+    content:"";
 
-        ::-webkit-scrollbar {
-            width: 9px;
-        }
+    position:absolute;
+    left:0;
+    bottom:-5px;
 
+    width:32px;
+    height:2px;
 
-        ::-webkit-scrollbar-track {
-            background: #020402;
-        }
+    background:var(--green);
 
+    box-shadow:
+        0 0 10px var(--green);
 
-        ::-webkit-scrollbar-thumb {
-            background:
-                linear-gradient(
-                    var(--green),
-                    var(--green-dark)
-                );
+    animation:logoLine 2s infinite;
+}
 
-            border-radius: 20px;
+.header-profile {
+    display:flex;
+    align-items:center;
 
-            box-shadow:
-                0 0 10px rgba(0, 255, 102, 0.5);
-        }
+    padding:9px 15px;
 
+    color:var(--green);
 
-        /* =========================================================
-           APP
-        ========================================================= */
+    font-size:13px;
+    font-weight:800;
 
-        .app {
-            position: relative;
-            z-index: 1;
+    border:
+        1px solid rgba(0,255,102,.22);
 
-            width: min(1180px, 100%);
-            margin: 0 auto;
+    border-radius:999px;
 
-            padding: 0 22px 70px;
-        }
+    background:
+        rgba(0,255,102,.045);
 
+    box-shadow:
+        inset 0 0 20px rgba(0,255,102,.025);
+}
 
-        /* =========================================================
-           HEADER
-        ========================================================= */
+.header-profile::before {
+    content:"";
 
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
+    width:7px;
+    height:7px;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    margin-right:8px;
 
-            min-height: 76px;
+    border-radius:50%;
 
-            padding: 15px 0;
+    background:var(--green);
 
-            background:
-                rgba(2, 4, 2, 0.88);
+    box-shadow:
+        0 0 7px var(--green),
+        0 0 15px var(--green);
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+    animation:onlinePulse 1.8s infinite;
+}
 
-            border-bottom:
-                1px solid rgba(0, 255, 102, 0.10);
-        }
+/* =========================================================
+   SCREEN
+========================================================= */
 
+.screen {
+    display:none;
+    padding-top:45px;
 
-        .logo {
-            position: relative;
+    animation:
+        screenIn .55s ease both;
+}
 
-            font-size: 29px;
-            font-weight: 950;
-            letter-spacing: -1.5px;
+.screen.active {
+    display:block;
+}
 
-            color: #ffffff;
+/* =========================================================
+   HERO
+========================================================= */
 
-            text-shadow:
-                0 0 15px rgba(255, 255, 255, 0.08);
-        }
+.hero {
+    position:relative;
 
+    max-width:850px;
+    margin:0 auto 38px;
 
-        .logo span {
-            color: var(--green);
+    text-align:center;
+}
 
-            text-shadow:
-                0 0 8px var(--green),
-                0 0 25px rgba(0, 255, 102, 0.55);
-        }
+.hero::before {
+    content:"";
 
+    position:absolute;
 
-        .logo::after {
-            content: "";
+    width:320px;
+    height:180px;
 
-            position: absolute;
-            left: 0;
-            bottom: -5px;
+    top:-80px;
+    left:50%;
 
-            width: 32px;
-            height: 2px;
+    transform:translateX(-50%);
 
-            background: var(--green);
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,255,102,.13),
+            transparent 70%
+        );
 
-            box-shadow:
-                0 0 10px var(--green);
+    filter:blur(10px);
 
-            animation: logoLine 2s infinite;
-        }
+    pointer-events:none;
+}
 
+.welcome-badge {
+    position:relative;
 
-        .header-profile {
-            display: flex;
-            align-items: center;
+    display:inline-flex;
 
-            padding: 9px 15px;
+    padding:8px 14px;
+    margin-bottom:18px;
 
-            color: var(--green);
+    border:
+        1px solid rgba(0,255,102,.28);
 
-            font-size: 13px;
-            font-weight: 800;
+    border-radius:999px;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.22);
+    background:
+        rgba(0,255,102,.06);
 
-            border-radius: 999px;
+    color:var(--green);
 
-            background:
-                rgba(0, 255, 102, 0.045);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.5px;
 
-            box-shadow:
-                inset 0 0 20px rgba(0, 255, 102, 0.025);
-        }
+    box-shadow:
+        0 0 25px rgba(0,255,102,.07);
 
+    animation:badgeFloat 3s ease-in-out infinite;
+}
 
-        .header-profile::before {
-            content: "";
+.hero h1 {
+    position:relative;
 
-            width: 7px;
-            height: 7px;
+    font-size:
+        clamp(42px,7vw,78px);
 
-            margin-right: 8px;
+    line-height:.98;
+    font-weight:950;
+    letter-spacing:-4px;
 
-            border-radius: 50%;
+    color:#fff;
 
-            background: var(--green);
+    margin-bottom:22px;
+}
 
-            box-shadow:
-                0 0 7px var(--green),
-                0 0 15px var(--green);
+.gradient {
+    color:var(--green);
 
-            animation: onlinePulse 1.8s infinite;
-        }
+    text-shadow:
+        0 0 12px rgba(0,255,102,.55),
+        0 0 35px rgba(0,255,102,.25);
+}
 
+.hero p {
+    max-width:650px;
+    margin:0 auto;
 
-        /* =========================================================
-           SCREEN
-        ========================================================= */
+    color:var(--muted);
 
-        .screen {
-            display: none;
+    font-size:16px;
+    line-height:1.7;
+}
 
-            padding-top: 45px;
+/* =========================================================
+   PROFILE BOX
+========================================================= */
 
-            animation:
-                screenIn 0.55s ease both;
-        }
+.profile-box {
+    max-width:900px;
+    margin:0 auto;
+    padding:34px;
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14,26,17,.96),
+            rgba(5,10,6,.96)
+        );
 
-        .screen.active {
-            display: block;
-        }
+    border:
+        1px solid var(--border);
 
+    border-radius:28px;
 
-        /* =========================================================
-           HERO
-        ========================================================= */
+    box-shadow:
+        var(--shadow),
+        0 0 45px rgba(0,255,102,.035);
 
-        .hero {
-            position: relative;
+    overflow:hidden;
+    position:relative;
+}
 
-            max-width: 850px;
+.profile-box::before,
+.profile-data-card::before {
+    content:"";
 
-            margin: 0 auto 38px;
+    position:absolute;
 
-            text-align: center;
-        }
+    width:180px;
+    height:180px;
 
+    top:-90px;
+    right:-90px;
 
-        .hero::before {
-            content: "";
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,102,.13),
+            transparent 70%
+        );
 
-            position: absolute;
+    pointer-events:none;
+}
 
-            width: 320px;
-            height: 180px;
+.profile-box h2 {
+    font-size:25px;
+    color:#fff;
+    margin-bottom:7px;
+}
 
-            top: -80px;
-            left: 50%;
+.profile-selection-description {
+    color:var(--muted);
+    margin-bottom:26px;
+}
 
-            transform: translateX(-50%);
+.profile-options {
+    display:grid;
 
-            background:
-                radial-gradient(
-                    ellipse,
-                    rgba(0, 255, 102, 0.13),
-                    transparent 70%
-                );
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
 
-            filter: blur(10px);
+    gap:20px;
+}
 
-            pointer-events: none;
-        }
+.profile-option {
+    position:relative;
 
+    min-height:250px;
+    padding:28px 22px;
 
-        .welcome-badge {
-            position: relative;
+    border:
+        1px solid rgba(0,255,102,.13);
 
-            display: inline-flex;
+    border-radius:23px;
 
-            padding: 8px 14px;
+    background:
+        linear-gradient(
+            145deg,
+            #0c160e,
+            #050a06
+        );
 
-            margin-bottom: 18px;
+    color:var(--white);
+    text-align:center;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.28);
+    overflow:hidden;
 
-            border-radius: 999px;
+    transition:
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease,
+        background .28s ease;
+}
 
-            background:
-                rgba(0, 255, 102, 0.06);
+.profile-option::before {
+    content:"";
 
-            color: var(--green);
+    position:absolute;
 
-            font-size: 11px;
-            font-weight: 900;
+    width:160px;
+    height:160px;
 
-            letter-spacing: 1.5px;
+    top:-90px;
+    left:-90px;
 
-            box-shadow:
-                0 0 25px rgba(0, 255, 102, 0.07);
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,102,.18),
+            transparent 70%
+        );
 
-            animation:
-                badgeFloat 3s ease-in-out infinite;
-        }
+    transition:transform .5s ease;
+}
 
+.profile-option::after {
+    content:"";
 
-        .hero h1 {
-            position: relative;
+    position:absolute;
 
-            font-size:
-                clamp(42px, 7vw, 78px);
+    width:220%;
+    height:2px;
 
-            line-height: 0.98;
+    top:0;
+    left:-220%;
 
-            font-weight: 950;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--green),
+            transparent
+        );
 
-            letter-spacing: -4px;
+    transition:left .7s ease;
+}
 
-            color: #ffffff;
+.profile-option:hover {
+    transform:
+        translateY(-7px)
+        scale(1.015);
 
-            margin-bottom: 22px;
-        }
+    border-color:
+        rgba(0,255,102,.62);
 
+    background:
+        linear-gradient(
+            145deg,
+            #102416,
+            #061008
+        );
 
-        .gradient {
-            color: var(--green);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.55),
+        0 0 25px rgba(0,255,102,.13),
+        inset 0 0 30px rgba(0,255,102,.025);
+}
 
-            text-shadow:
-                0 0 12px rgba(0, 255, 102, 0.55),
-                0 0 35px rgba(0, 255, 102, 0.25);
-        }
+.profile-option:hover::before {
+    transform:scale(1.8);
+}
 
+.profile-option:hover::after {
+    left:120%;
+}
 
-        .hero p {
-            max-width: 650px;
+.profile-option:active {
+    transform:scale(.95);
 
-            margin: 0 auto;
+    border-color:var(--green);
 
-            color: var(--muted);
+    box-shadow:
+        0 0 0 4px rgba(0,255,102,.08),
+        0 0 45px rgba(0,255,102,.45);
+}
 
-            font-size: 16px;
-            line-height: 1.7;
-        }
+.profile-option.selected {
+    border-color:var(--green);
 
+    box-shadow:
+        0 0 0 4px rgba(0,255,102,.08),
+        0 0 40px rgba(0,255,102,.35);
 
-        /* =========================================================
-           PROFILE BOX
-        ========================================================= */
+    transform:scale(.98);
+}
 
-        .profile-box {
-            max-width: 900px;
+.profile-option:focus-visible {
+    outline:none;
 
-            margin: 0 auto;
+    border-color:var(--green);
 
-            padding: 34px;
+    box-shadow:
+        0 0 0 3px rgba(0,255,102,.15),
+        0 0 30px rgba(0,255,102,.20);
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(14, 26, 17, 0.96),
-                    rgba(5, 10, 6, 0.96)
-                );
+.profile-icon {
+    position:relative;
+    z-index:2;
 
-            border:
-                1px solid var(--border);
+    display:grid;
+    place-items:center;
 
-            border-radius: 28px;
+    width:90px;
+    height:90px;
 
-            box-shadow:
-                var(--shadow),
-                0 0 45px rgba(0, 255, 102, 0.035);
+    margin:0 auto 18px;
 
-            overflow: hidden;
+    border-radius:50%;
 
-            position: relative;
-        }
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,102,.13),
+            rgba(0,255,102,.025)
+        );
 
+    border:
+        1px solid rgba(0,255,102,.25);
 
-        .profile-box::before,
-        .profile-data-card::before {
-            content: "";
+    font-size:46px;
 
-            position: absolute;
+    box-shadow:
+        0 0 25px rgba(0,255,102,.08);
 
-            width: 180px;
-            height: 180px;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
 
-            top: -90px;
-            right: -90px;
+.profile-option:hover .profile-icon {
+    transform:
+        translateY(-4px)
+        scale(1.08);
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 255, 102, 0.13),
-                    transparent 70%
-                );
+    box-shadow:
+        0 0 30px rgba(0,255,102,.20);
+}
 
-            pointer-events: none;
-        }
+.profile-option h3 {
+    position:relative;
+    z-index:2;
 
+    font-size:22px;
+    margin-bottom:7px;
+}
 
-        .profile-box h2 {
-            font-size: 25px;
+.profile-option p {
+    position:relative;
+    z-index:2;
 
-            color: #ffffff;
+    color:var(--muted);
 
-            margin-bottom: 7px;
-        }
+    font-size:13px;
+    line-height:1.5;
+}
 
+/* =========================================================
+   PROFILE DATA
+========================================================= */
 
-        .profile-selection-description {
-            color: var(--muted);
+.profile-data-header {
+    position:relative;
 
-            margin-bottom: 26px;
-        }
+    max-width:950px;
+    margin:0 auto 25px;
 
+    display:flex;
+    align-items:center;
 
-        .profile-options {
-            display: grid;
+    gap:18px;
+    padding:15px 0;
+}
 
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+.profile-back-button,
+.back-button {
+    border:
+        1px solid rgba(0,255,102,.18);
 
-            gap: 20px;
-        }
+    background:
+        rgba(0,255,102,.04);
 
+    color:var(--green);
 
-        .profile-option {
-            position: relative;
+    padding:10px 15px;
 
-            min-height: 250px;
+    border-radius:12px;
 
-            padding: 28px 22px;
+    font-weight:800;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.13);
+    transition:.25s ease;
+}
 
-            border-radius: 23px;
+.profile-back-button:hover,
+.back-button:hover {
+    background:
+        rgba(0,255,102,.10);
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #0c160e,
-                    #050a06
-                );
+    border-color:
+        rgba(0,255,102,.55);
 
-            color: var(--white);
+    transform:translateX(-3px);
 
-            text-align: center;
+    box-shadow:
+        0 0 20px rgba(0,255,102,.10);
+}
 
-            overflow: hidden;
+.profile-big-icon {
+    display:grid;
+    place-items:center;
 
-            transition:
-                transform 0.28s ease,
-                border-color 0.28s ease,
-                box-shadow 0.28s ease,
-                background 0.28s ease;
-        }
+    width:72px;
+    height:72px;
 
+    flex-shrink:0;
 
-        .profile-option::before {
-            content: "";
+    border-radius:20px;
 
-            position: absolute;
+    font-size:38px;
 
-            width: 160px;
-            height: 160px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,102,.13),
+            rgba(0,255,102,.025)
+        );
 
-            top: -90px;
-            left: -90px;
+    border:
+        1px solid rgba(0,255,102,.28);
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 255, 102, 0.18),
-                    transparent 70%
-                );
+    box-shadow:
+        0 0 25px rgba(0,255,102,.09);
+}
 
-            transition:
-                transform 0.5s ease;
-        }
+.profile-data-header h1 {
+    font-size:32px;
+    color:#fff;
+    margin-bottom:5px;
+}
 
+.profile-data-header p {
+    color:var(--muted);
+    font-size:14px;
+}
 
-        .profile-option::after {
-            content: "";
+.profile-data-card {
+    position:relative;
 
-            position: absolute;
+    max-width:950px;
+    margin:0 auto;
+    padding:32px;
 
-            width: 220%;
-            height: 2px;
+    border-radius:28px;
 
-            top: 0;
-            left: -220%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,22,14,.97),
+            rgba(4,9,5,.97)
+        );
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--green),
-                    transparent
-                );
+    border:
+        1px solid var(--border);
 
-            transition: left 0.7s ease;
-        }
+    box-shadow:var(--shadow);
 
+    overflow:hidden;
+}
 
-        .profile-option:hover {
-            transform:
-                translateY(-7px)
-                scale(1.015);
+.card-description {
+    margin-bottom:28px;
+}
 
-            border-color:
-                rgba(0, 255, 102, 0.62);
+.card-description h2 {
+    color:#fff;
+    font-size:23px;
+    margin-bottom:7px;
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #102416,
-                    #061008
-                );
+.card-description p {
+    color:var(--muted);
+    font-size:14px;
+}
 
-            box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.55),
-                0 0 25px rgba(0, 255, 102, 0.13),
-                inset 0 0 30px rgba(0, 255, 102, 0.025);
-        }
+/* =========================================================
+   BMI FORM
+========================================================= */
 
+.bmi-form {
+    display:grid;
 
-        .profile-option:hover::before {
-            transform: scale(1.8);
-        }
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
 
+    gap:16px;
+    margin-bottom:18px;
+}
 
-        .profile-option:hover::after {
-            left: 120%;
-        }
+.bmi-field {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
 
+.bmi-field label {
+    color:#dfffe9;
+    font-size:13px;
+    font-weight:800;
+}
 
-        .profile-option:active {
-            transform:
-                scale(0.95);
+.bmi-field input {
+    width:100%;
+    min-height:52px;
 
-            border-color: var(--green);
+    padding:0 15px;
 
-            box-shadow:
-                0 0 0 4px rgba(0, 255, 102, 0.08),
-                0 0 45px rgba(0, 255, 102, 0.45);
-        }
+    color:#fff;
+    background:#050a06;
 
+    border:
+        1px solid rgba(0,255,102,.16);
 
-        .profile-option:focus-visible {
-            outline: none;
+    border-radius:13px;
 
-            border-color: var(--green);
+    outline:none;
 
-            box-shadow:
-                0 0 0 3px rgba(0, 255, 102, 0.15),
-                0 0 30px rgba(0, 255, 102, 0.20);
-        }
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
 
+.bmi-field input::placeholder {
+    color:#52665a;
+}
 
-        .profile-icon {
-            position: relative;
-            z-index: 2;
+.bmi-field input:focus {
+    background:#071008;
 
-            display: grid;
-            place-items: center;
+    border-color:var(--green);
 
-            width: 90px;
-            height: 90px;
+    box-shadow:
+        0 0 0 3px rgba(0,255,102,.08),
+        0 0 25px rgba(0,255,102,.10);
+}
 
-            margin: 0 auto 18px;
+.input-with-unit {
+    position:relative;
+}
 
-            border-radius: 50%;
+.input-with-unit input {
+    padding-right:50px;
+}
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 255, 102, 0.13),
-                    rgba(0, 255, 102, 0.025)
-                );
+.input-unit {
+    position:absolute;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.25);
+    top:50%;
+    right:15px;
 
-            font-size: 46px;
+    transform:translateY(-50%);
 
-            box-shadow:
-                0 0 25px rgba(0, 255, 102, 0.08);
+    color:var(--green);
 
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
+    font-size:12px;
+    font-weight:900;
+}
 
+.bmi-error {
+    min-height:20px;
+    margin-bottom:10px;
 
-        .profile-option:hover .profile-icon {
-            transform:
-                translateY(-4px)
-                scale(1.08);
+    color:#ff6b6b;
 
-            box-shadow:
-                0 0 30px rgba(0, 255, 102, 0.20);
-        }
+    font-size:13px;
+    font-weight:700;
+}
 
+.bmi-button,
+.continue-fit30,
+.exercise-button {
+    position:relative;
 
-        .profile-option h3 {
-            position: relative;
-            z-index: 2;
+    width:100%;
+    min-height:54px;
 
-            font-size: 22px;
+    padding:14px 20px;
 
-            margin-bottom: 7px;
-        }
+    border:none;
+    border-radius:14px;
 
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-2)
+        );
 
-        .profile-option p {
-            position: relative;
-            z-index: 2;
+    color:#001b08;
+    font-weight:950;
 
-            color: var(--muted);
+    box-shadow:
+        0 0 20px rgba(0,255,102,.16);
 
-            font-size: 13px;
-            line-height: 1.5;
-        }
+    overflow:hidden;
 
+    transition:
+        transform .2s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
 
-        /* =========================================================
-           PROFILE DATA
-        ========================================================= */
+.bmi-button::before,
+.continue-fit30::before,
+.exercise-button::before {
+    content:"";
 
-        .profile-data-header {
-            position: relative;
+    position:absolute;
 
-            max-width: 950px;
+    top:0;
+    left:-100%;
 
-            margin: 0 auto 25px;
+    width:70%;
+    height:100%;
 
-            display: flex;
-            align-items: center;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
 
-            gap: 18px;
+    transform:skewX(-20deg);
 
-            padding: 15px 0;
-        }
+    transition:left .55s ease;
+}
 
+.bmi-button:hover,
+.continue-fit30:hover,
+.exercise-button:hover {
+    transform:translateY(-3px);
 
-        .profile-back-button,
-        .back-button {
-            border:
-                1px solid rgba(0, 255, 102, 0.18);
+    filter:brightness(1.08);
 
-            background:
-                rgba(0, 255, 102, 0.04);
+    box-shadow:
+        0 10px 35px rgba(0,255,102,.22),
+        0 0 35px rgba(0,255,102,.17);
+}
 
-            color: var(--green);
+.bmi-button:hover::before,
+.continue-fit30:hover::before,
+.exercise-button:hover::before {
+    left:130%;
+}
 
-            padding: 10px 15px;
+.bmi-button:active,
+.continue-fit30:active,
+.exercise-button:active {
+    transform:
+        translateY(0)
+        scale(.97);
 
-            border-radius: 12px;
+    box-shadow:
+        0 0 35px rgba(0,255,102,.40);
+}
 
-            font-weight: 800;
+/* =========================================================
+   BMI RESULT
+========================================================= */
 
-            transition:
-                0.25s ease;
-        }
+.bmi-result {
+    display:none;
 
+    margin-top:25px;
+    padding:26px;
 
-        .profile-back-button:hover,
-        .back-button:hover {
-            background:
-                rgba(0, 255, 102, 0.10);
+    border:
+        1px solid rgba(0,255,102,.18);
 
-            border-color:
-                rgba(0, 255, 102, 0.55);
+    border-radius:22px;
 
-            transform:
-                translateX(-3px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,102,.045),
+            rgba(0,0,0,.22)
+        );
+}
 
-            box-shadow:
-                0 0 20px rgba(0, 255, 102, 0.10);
-        }
+.bmi-result.show {
+    display:block;
 
+    animation:
+        resultIn .55s ease both;
+}
 
-        .profile-big-icon {
-            display: grid;
-            place-items: center;
+.bmi-main-result {
+    text-align:center;
+    margin-bottom:25px;
+}
 
-            width: 72px;
-            height: 72px;
+.bmi-label {
+    display:block;
 
-            flex-shrink: 0;
+    color:var(--muted);
 
-            border-radius: 20px;
+    font-size:13px;
+    font-weight:700;
+}
 
-            font-size: 38px;
+.bmi-number {
+    margin:7px 0;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 255, 102, 0.13),
-                    rgba(0, 255, 102, 0.025)
-                );
+    color:var(--green);
 
-            border:
-                1px solid rgba(0, 255, 102, 0.28);
+    font-size:60px;
+    line-height:1;
+    font-weight:950;
 
-            box-shadow:
-                0 0 25px rgba(0, 255, 102, 0.09);
-        }
+    text-shadow:
+        0 0 12px rgba(0,255,102,.5),
+        0 0 35px rgba(0,255,102,.22);
 
+    animation:numberGlow 2s ease-in-out infinite;
+}
 
-        .profile-data-header h1 {
-            font-size: 32px;
+.bmi-classification {
+    color:#fff;
+    font-size:18px;
+    font-weight:900;
+}
 
-            color: #ffffff;
+.bmi-scale {
+    position:relative;
 
-            margin-bottom: 5px;
-        }
+    width:100%;
+    height:14px;
 
+    margin-top:22px;
 
-        .profile-data-header p {
-            color: var(--muted);
+    border-radius:999px;
 
-            font-size: 14px;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e 0%,
+            #22c55e 25%,
+            #a3e635 25%,
+            #a3e635 50%,
+            #facc15 50%,
+            #facc15 70%,
+            #ef4444 70%,
+            #ef4444 100%
+        );
 
+    box-shadow:
+        0 0 18px rgba(0,255,102,.10);
+}
 
-        .profile-data-card {
-            position: relative;
+.bmi-marker {
+    position:absolute;
 
-            max-width: 950px;
+    top:50%;
 
-            margin: 0 auto;
+    width:22px;
+    height:22px;
 
-            padding: 32px;
+    transform:
+        translate(-50%,-50%);
 
-            border-radius: 28px;
+    border-radius:50%;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(12, 22, 14, 0.97),
-                    rgba(4, 9, 5, 0.97)
-                );
+    background:#fff;
 
-            border:
-                1px solid var(--border);
+    border:
+        3px solid #001b08;
 
-            box-shadow:
-                var(--shadow);
+    box-shadow:
+        0 0 0 3px var(--green),
+        0 0 20px var(--green);
 
-            overflow: hidden;
-        }
+    transition:
+        left .6s cubic-bezier(.17,.67,.33,1.2);
+}
 
+.bmi-scale-labels {
+    display:grid;
 
-        .card-description {
-            margin-bottom: 28px;
-        }
+    grid-template-columns:
+        repeat(4,1fr);
 
+    gap:5px;
 
-        .card-description h2 {
-            color: #ffffff;
+    margin-top:9px;
 
-            font-size: 23px;
+    color:var(--muted);
 
-            margin-bottom: 7px;
-        }
+    font-size:10px;
+    text-align:center;
+}
 
+.bmi-message {
+    margin:20px 0;
 
-        .card-description p {
-            color: var(--muted);
+    padding:14px 16px;
 
-            font-size: 14px;
-        }
+    color:#cdebd6;
 
+    background:
+        rgba(0,255,102,.04);
 
-        /* =========================================================
-           BMI FORM
-        ========================================================= */
+    border-left:
+        3px solid var(--green);
 
-        .bmi-form {
-            display: grid;
+    border-radius:9px;
 
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
+    font-size:13px;
+    line-height:1.55;
+}
 
-            gap: 16px;
+/* =========================================================
+   WEIGHT SUMMARY
+========================================================= */
 
-            margin-bottom: 18px;
-        }
+.weight-summary {
+    display:grid;
 
+    grid-template-columns:
+        repeat(3,1fr);
 
-        .bmi-field {
-            display: flex;
-            flex-direction: column;
+    gap:13px;
+    margin-top:18px;
+}
 
-            gap: 8px;
-        }
+.weight-box {
+    display:flex;
+    flex-direction:column;
 
+    gap:8px;
+    padding:18px;
 
-        .bmi-field label {
-            color: #dfffe9;
+    background:
+        rgba(0,0,0,.25);
 
-            font-size: 13px;
-            font-weight: 800;
-        }
+    border:
+        1px solid rgba(0,255,102,.10);
 
+    border-radius:15px;
 
-        .bmi-field input {
-            width: 100%;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
 
-            min-height: 52px;
+.weight-box:hover {
+    transform:translateY(-4px);
 
-            padding: 0 15px;
+    border-color:
+        rgba(0,255,102,.32);
 
-            color: #ffffff;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.3);
+}
 
-            background:
-                #050a06;
+.weight-box span {
+    color:var(--muted);
 
-            border:
-                1px solid rgba(0, 255, 102, 0.16);
+    font-size:11px;
+    font-weight:700;
+}
 
-            border-radius: 13px;
+.weight-box strong {
+    color:#fff;
+    font-size:18px;
+}
 
-            outline: none;
+.weight-box.highlight {
+    border-color:
+        rgba(0,255,102,.35);
 
-            transition:
-                border-color 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
-        }
+    background:
+        rgba(0,255,102,.05);
 
+    box-shadow:
+        inset 0 0 25px rgba(0,255,102,.025);
+}
 
-        .bmi-field input::placeholder {
-            color: #52665a;
-        }
+.weight-box.highlight strong {
+    color:var(--green);
 
+    text-shadow:
+        0 0 10px rgba(0,255,102,.3);
+}
 
-        .bmi-field input:focus {
-            background:
-                #071008;
+/* =========================================================
+   GOAL
+========================================================= */
 
-            border-color:
-                var(--green);
+.goal-box {
+    margin-top:16px;
+    padding:19px;
 
-            box-shadow:
-                0 0 0 3px rgba(0, 255, 102, 0.08),
-                0 0 25px rgba(0, 255, 102, 0.10);
-        }
+    border:
+        1px solid rgba(0,255,102,.15);
 
+    border-radius:17px;
 
-        .input-with-unit {
-            position: relative;
-        }
+    background:
+        rgba(0,255,102,.035);
+}
 
+.goal-box h3 {
+    margin-bottom:15px;
 
-        .input-with-unit input {
-            padding-right: 50px;
-        }
+    color:#fff;
+    font-size:16px;
+}
 
+.goal-grid {
+    display:grid;
 
-        .input-unit {
-            position: absolute;
+    grid-template-columns:
+        repeat(2,1fr);
 
-            top: 50%;
-            right: 15px;
+    gap:12px;
+}
 
-            transform: translateY(-50%);
+.goal-stat {
+    padding:14px;
 
-            color: var(--green);
+    background:
+        rgba(0,0,0,.22);
 
-            font-size: 12px;
-            font-weight: 900;
-        }
+    border-radius:12px;
+}
 
+.goal-stat span {
+    display:block;
 
-        .bmi-error {
-            min-height: 20px;
+    color:var(--muted);
+    font-size:11px;
 
-            margin-bottom: 10px;
+    margin-bottom:5px;
+}
 
-            color: #ff6b6b;
+.goal-stat strong {
+    color:var(--green);
+    font-size:15px;
+}
 
-            font-size: 13px;
-            font-weight: 700;
-        }
+.bmi-notice {
+    display:none;
 
+    margin-top:16px;
+    padding:15px;
 
-        .bmi-button,
-        .continue-fit30,
-        .exercise-button {
-            position: relative;
+    color:#d8f5df;
 
-            width: 100%;
+    background:
+        rgba(0,255,102,.045);
 
-            min-height: 54px;
+    border:
+        1px solid rgba(0,255,102,.15);
 
-            padding: 14px 20px;
+    border-radius:13px;
 
-            border: none;
+    font-size:12px;
+    line-height:1.55;
+}
 
-            border-radius: 14px;
+.continue-fit30 {
+    display:none;
+    margin-top:18px;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    var(--green-2)
-                );
+/* =========================================================
+   DASHBOARD
+========================================================= */
 
-            color: #001b08;
+.dashboard {
+    display:grid;
 
-            font-weight: 950;
+    grid-template-columns:
+        repeat(4,1fr);
 
-            box-shadow:
-                0 0 20px rgba(0, 255, 102, 0.16);
+    gap:15px;
+    margin-bottom:18px;
+}
 
-            overflow: hidden;
+.stat-card {
+    position:relative;
 
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.25s ease,
-                filter 0.25s ease;
-        }
+    padding:20px;
+    min-height:150px;
 
+    background:
+        linear-gradient(
+            145deg,
+            #0d180f,
+            #050a06
+        );
 
-        .bmi-button::before,
-        .continue-fit30::before,
-        .exercise-button::before {
-            content: "";
+    border:
+        1px solid rgba(0,255,102,.12);
 
-            position: absolute;
+    border-radius:19px;
 
-            top: 0;
-            left: -100%;
+    overflow:hidden;
 
-            width: 70%;
-            height: 100%;
+    transition:
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
+}
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.35),
-                    transparent
-                );
+.stat-card::before {
+    content:"";
 
-            transform: skewX(-20deg);
+    position:absolute;
 
-            transition:
-                left 0.55s ease;
-        }
+    width:110px;
+    height:110px;
 
+    top:-55px;
+    right:-55px;
 
-        .bmi-button:hover,
-        .continue-fit30:hover,
-        .exercise-button:hover {
-            transform:
-                translateY(-3px);
+    border-radius:50%;
 
-            filter:
-                brightness(1.08);
+    background:
+        rgba(0,255,102,.10);
 
-            box-shadow:
-                0 10px 35px rgba(0, 255, 102, 0.22),
-                0 0 35px rgba(0, 255, 102, 0.17);
-        }
+    filter:blur(15px);
+}
 
+.stat-card:hover {
+    transform:translateY(-6px);
 
-        .bmi-button:hover::before,
-        .continue-fit30:hover::before,
-        .exercise-button:hover::before {
-            left: 130%;
-        }
+    border-color:
+        rgba(0,255,102,.35);
 
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.4),
+        0 0 25px rgba(0,255,102,.07);
+}
 
-        .bmi-button:active,
-        .continue-fit30:active,
-        .exercise-button:active {
-            transform:
-                translateY(0)
-                scale(0.97);
+.stat-icon {
+    font-size:25px;
+    margin-bottom:14px;
 
-            box-shadow:
-                0 0 35px rgba(0, 255, 102, 0.40);
-        }
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(0,255,102,.25)
+        );
+}
 
+.stat-card small {
+    display:block;
 
-        /* =========================================================
-           BMI RESULT
-        ========================================================= */
+    color:var(--muted);
 
-        .bmi-result {
-            display: none;
+    font-size:11px;
+    font-weight:700;
 
-            margin-top: 25px;
+    margin-bottom:5px;
+}
 
-            padding: 26px;
+.stat-card strong {
+    color:#fff;
+    font-size:22px;
+}
 
-            border:
-                1px solid rgba(0, 255, 102, 0.18);
+/* =========================================================
+   WATER
+========================================================= */
 
-            border-radius: 22px;
+.water-card {
+    padding:24px;
+    margin-bottom:18px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 255, 102, 0.045),
-                    rgba(0, 0, 0, 0.22)
-                );
-        }
+    border:
+        1px solid rgba(0,255,102,.13);
 
+    border-radius:21px;
 
-        .bmi-result.show {
-            display: block;
+    background:
+        linear-gradient(
+            145deg,
+            #0c180f,
+            #050a06
+        );
 
-            animation:
-                resultIn 0.55s ease both;
-        }
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.3);
+}
 
+.water-top {
+    display:flex;
 
-        .bmi-main-result {
-            text-align: center;
+    align-items:center;
+    justify-content:space-between;
 
-            margin-bottom: 25px;
-        }
+    gap:20px;
+    margin-bottom:20px;
+}
 
+.water-title {
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
 
-        .bmi-label {
-            display: block;
+.water-title > span {
+    display:grid;
+    place-items:center;
 
-            color: var(--muted);
+    width:48px;
+    height:48px;
 
-            font-size: 13px;
-            font-weight: 700;
-        }
+    border-radius:14px;
 
+    background:
+        rgba(0,255,102,.07);
 
-        .bmi-number {
-            margin: 7px 0;
+    border:
+        1px solid rgba(0,255,102,.18);
 
-            color: var(--green);
+    font-size:22px;
+}
 
-            font-size: 60px;
-            line-height: 1;
+.water-title h2 {
+    font-size:18px;
+    margin-bottom:3px;
+}
 
-            font-weight: 950;
+.water-title small {
+    color:var(--muted);
+    font-size:11px;
+}
 
-            text-shadow:
-                0 0 12px rgba(0, 255, 102, 0.5),
-                0 0 35px rgba(0, 255, 102, 0.22);
+.water-counter {
+    color:var(--green);
 
-            animation:
-                numberGlow 2s ease-in-out infinite;
-        }
+    font-size:24px;
+    font-weight:950;
 
+    text-shadow:
+        0 0 12px rgba(0,255,102,.3);
+}
 
-        .bmi-classification {
-            color: #ffffff;
+.water-counter span {
+    font-size:32px;
+}
 
-            font-size: 18px;
-            font-weight: 900;
-        }
+.water-bar {
+    height:13px;
 
+    background:#020502;
 
-        .bmi-scale {
-            position: relative;
+    border:
+        1px solid rgba(0,255,102,.10);
 
-            width: 100%;
-            height: 14px;
+    border-radius:999px;
 
-            margin-top: 22px;
+    overflow:hidden;
+    margin-bottom:16px;
+}
 
-            border-radius: 999px;
+.water-progress {
+    width:0%;
+    height:100%;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #22c55e 0%,
-                    #22c55e 25%,
-                    #a3e635 25%,
-                    #a3e635 50%,
-                    #facc15 50%,
-                    #facc15 70%,
-                    #ef4444 70%,
-                    #ef4444 100%
-                );
+    border-radius:inherit;
 
-            box-shadow:
-                0 0 18px rgba(0, 255, 102, 0.10);
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #00b84b,
+            var(--green),
+            #79ffad
+        );
 
+    box-shadow:
+        0 0 16px rgba(0,255,102,.55);
 
-        .bmi-marker {
-            position: absolute;
+    transition:width .5s ease;
+}
 
-            top: 50%;
+.water-buttons {
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
 
-            width: 22px;
-            height: 22px;
+.btn-water {
+    padding:10px 14px;
 
-            transform:
-                translate(-50%, -50%);
+    color:var(--green);
 
-            border-radius: 50%;
+    background:
+        rgba(0,255,102,.045);
 
-            background: #ffffff;
+    border:
+        1px solid rgba(0,255,102,.16);
 
-            border:
-                3px solid #001b08;
+    border-radius:10px;
 
-            box-shadow:
-                0 0 0 3px var(--green),
-                0 0 20px var(--green);
+    font-size:12px;
+    font-weight:800;
 
-            transition:
-                left 0.6s cubic-bezier(.17,.67,.33,1.2);
-        }
+    transition:.2s ease;
+}
 
+.btn-water:hover {
+    background:
+        rgba(0,255,102,.10);
 
-        .bmi-scale-labels {
-            display: grid;
+    border-color:
+        rgba(0,255,102,.45);
 
-            grid-template-columns:
-                repeat(4, 1fr);
+    transform:translateY(-2px);
 
-            gap: 5px;
+    box-shadow:
+        0 0 18px rgba(0,255,102,.09);
+}
 
-            margin-top: 9px;
+.btn-water:active {
+    transform:scale(.94);
+}
 
-            color: var(--muted);
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-            font-size: 10px;
-            text-align: center;
-        }
+.progress-box {
+    margin-bottom:35px;
+    padding:20px;
 
+    border:
+        1px solid rgba(0,255,102,.12);
 
-        .bmi-message {
-            margin: 20px 0;
+    border-radius:18px;
 
-            padding: 14px 16px;
+    background:
+        rgba(8,16,9,.8);
+}
 
-            color: #cdebd6;
+.progress-header {
+    display:flex;
+    justify-content:space-between;
 
-            background:
-                rgba(0, 255, 102, 0.04);
+    margin-bottom:12px;
 
-            border-left:
-                3px solid var(--green);
+    font-size:13px;
+}
 
-            border-radius: 9px;
+.progress-header strong {
+    color:#fff;
+}
 
-            font-size: 13px;
-            line-height: 1.55;
-        }
+.progress-header span {
+    color:var(--green);
+    font-weight:900;
+}
 
+.progress-bar {
+    height:10px;
 
-        /* =========================================================
-           WEIGHT SUMMARY
-        ========================================================= */
+    background:#020502;
 
-        .weight-summary {
-            display: grid;
+    border-radius:999px;
+    overflow:hidden;
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
+.progress-fill {
+    width:0%;
+    height:100%;
 
-            gap: 13px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--green-dark),
+            var(--green),
+            var(--green-3)
+        );
 
-            margin-top: 18px;
-        }
+    border-radius:inherit;
 
+    box-shadow:
+        0 0 16px rgba(0,255,102,.5);
 
-        .weight-box {
-            display: flex;
-            flex-direction: column;
+    transition:width .6s ease;
+}
 
-            gap: 8px;
+/* =========================================================
+   SECTION TITLES
+========================================================= */
 
-            padding: 18px;
+.section-title {
+    position:relative;
 
-            background:
-                rgba(0, 0, 0, 0.25);
+    margin:34px 0 16px;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.10);
+    color:#fff;
+    font-size:22px;
+    font-weight:900;
+}
 
-            border-radius: 15px;
+.section-title::after {
+    content:"";
 
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
-        }
+    display:inline-block;
 
+    width:35px;
+    height:3px;
 
-        .weight-box:hover {
-            transform:
-                translateY(-4px);
+    margin-left:10px;
+    vertical-align:middle;
 
-            border-color:
-                rgba(0, 255, 102, 0.32);
+    background:var(--green);
 
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.3);
-        }
+    border-radius:10px;
 
+    box-shadow:
+        0 0 10px var(--green);
+}
 
-        .weight-box span {
-            color: var(--muted);
+/* =========================================================
+   DAYS
+========================================================= */
 
-            font-size: 11px;
-            font-weight: 700;
-        }
+.days {
+    display:grid;
 
+    grid-template-columns:
+        repeat(10,1fr);
 
-        .weight-box strong {
-            color: #ffffff;
+    gap:8px;
+}
 
-            font-size: 18px;
-        }
+.day-card {
+    position:relative;
 
+    min-height:55px;
 
-        .weight-box.highlight {
-            border-color:
-                rgba(0, 255, 102, 0.35);
+    display:grid;
+    place-items:center;
 
-            background:
-                rgba(0, 255, 102, 0.05);
+    color:var(--muted);
 
-            box-shadow:
-                inset 0 0 25px rgba(0, 255, 102, 0.025);
-        }
+    background:#070d08;
 
+    border:
+        1px solid rgba(0,255,102,.10);
 
-        .weight-box.highlight strong {
-            color: var(--green);
+    border-radius:10px;
 
-            text-shadow:
-                0 0 10px rgba(0, 255, 102, 0.3);
-        }
+    font-size:12px;
+    font-weight:900;
 
+    transition:.22s ease;
+    cursor:pointer;
+}
 
-        /* =========================================================
-           GOAL
-        ========================================================= */
+.day-card:hover {
+    color:var(--green);
 
-        .goal-box {
-            margin-top: 16px;
+    transform:translateY(-3px);
 
-            padding: 19px;
+    border-color:
+        rgba(0,255,102,.35);
 
-            border:
-                1px solid rgba(0, 255, 102, 0.15);
+    box-shadow:
+        0 0 18px rgba(0,255,102,.08);
+}
 
-            border-radius: 17px;
+.day-card.completed,
+.day-card.active {
+    color:#001b08;
 
-            background:
-                rgba(0, 255, 102, 0.035);
-        }
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-2)
+        );
 
+    border-color:var(--green);
 
-        .goal-box h3 {
-            margin-bottom: 15px;
+    box-shadow:
+        0 0 15px rgba(0,255,102,.30);
+}
 
-            color: #ffffff;
+/* =========================================================
+   CATEGORIES
+========================================================= */
 
-            font-size: 16px;
-        }
+.categories {
+    display:grid;
 
+    grid-template-columns:
+        repeat(6,1fr);
 
-        .goal-grid {
-            display: grid;
+    gap:12px;
+}
 
-            grid-template-columns:
-                repeat(2, 1fr);
+.category {
+    position:relative;
 
-            gap: 12px;
-        }
+    min-height:125px;
+    padding:15px 10px;
 
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
-        .goal-stat {
-            padding: 14px;
+    gap:6px;
 
-            background:
-                rgba(0, 0, 0, 0.22);
+    color:#dfffe8;
 
-            border-radius: 12px;
-        }
+    background:
+        linear-gradient(
+            145deg,
+            #0b160d,
+            #050a06
+        );
 
+    border:
+        1px solid rgba(0,255,102,.11);
 
-        .goal-stat span {
-            display: block;
+    border-radius:17px;
 
-            color: var(--muted);
+    font-weight:900;
 
-            font-size: 11px;
+    overflow:hidden;
 
-            margin-bottom: 5px;
-        }
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        color .25s ease;
+}
 
+.category::before {
+    content:"";
 
-        .goal-stat strong {
-            color: var(--green);
+    position:absolute;
+    inset:0;
 
-            font-size: 15px;
-        }
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,255,102,.12),
+            transparent 60%
+        );
 
+    opacity:0;
 
-        .bmi-notice {
-            display: none;
+    transition:opacity .25s ease;
+}
 
-            margin-top: 16px;
+.category:hover {
+    transform:translateY(-5px);
 
-            padding: 15px;
+    color:var(--green);
 
-            color: #d8f5df;
+    border-color:
+        rgba(0,255,102,.40);
 
-            background:
-                rgba(0, 255, 102, 0.045);
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.4),
+        0 0 20px rgba(0,255,102,.07);
+}
 
-            border:
-                1px solid rgba(0, 255, 102, 0.15);
+.category:hover::before {
+    opacity:1;
+}
 
-            border-radius: 13px;
+.category:active {
+    transform:scale(.95);
+}
 
-            font-size: 12px;
+.category.active {
+    color:#001b08;
 
-            line-height: 1.55;
-        }
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-2)
+        );
 
+    border-color:var(--green);
 
-        .continue-fit30 {
-            display: none;
+    box-shadow:
+        0 0 20px rgba(0,255,102,.32),
+        0 10px 30px rgba(0,0,0,.35);
+}
 
-            margin-top: 18px;
-        }
+.category.active::before {
+    opacity:0;
+}
 
+.category-icon {
+    position:relative;
+    z-index:2;
 
-        /* =========================================================
-           DASHBOARD
-        ========================================================= */
+    font-size:25px;
 
-        .dashboard {
-            display: grid;
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(0,255,102,.25)
+        );
+}
 
-            grid-template-columns:
-                repeat(4, 1fr);
+.category small {
+    position:relative;
+    z-index:2;
 
-            gap: 15px;
+    opacity:.65;
+    font-size:9px;
+}
 
-            margin-bottom: 18px;
-        }
+/* =========================================================
+   EXERCISE GRID
+========================================================= */
 
+.exercise-grid {
+    display:grid;
 
-        .stat-card {
-            position: relative;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
 
-            padding: 20px;
+    gap:17px;
+}
 
-            min-height: 150px;
+.exercise-card {
+    position:relative;
+    overflow:hidden;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #0d180f,
-                    #050a06
-                );
+    padding:0;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.12);
+    background:
+        linear-gradient(
+            145deg,
+            #0c170e,
+            #050a06
+        );
 
-            border-radius: 19px;
+    border:
+        1px solid rgba(0,255,102,.11);
 
-            overflow: hidden;
+    border-radius:19px;
 
-            transition:
-                transform 0.28s ease,
-                border-color 0.28s ease,
-                box-shadow 0.28s ease;
-        }
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.3);
 
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
 
-        .stat-card::before {
-            content: "";
+.exercise-card:hover {
+    transform:translateY(-7px);
 
-            position: absolute;
+    border-color:
+        rgba(0,255,102,.38);
 
-            width: 110px;
-            height: 110px;
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.45),
+        0 0 25px rgba(0,255,102,.07);
+}
 
-            top: -55px;
-            right: -55px;
+.exercise-card img,
+.exercise-image {
+    width:100%;
+    height:190px;
 
-            border-radius: 50%;
+    object-fit:cover;
+    display:block;
 
-            background:
-                rgba(0, 255, 102, 0.10);
+    background:#030603;
+}
 
-            filter: blur(15px);
-        }
+.exercise-card-content {
+    padding:18px;
+}
 
+.exercise-card h3 {
+    color:#fff;
+    font-size:17px;
+    margin-bottom:7px;
+}
 
-        .stat-card:hover {
-            transform:
-                translateY(-6px);
+.exercise-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+}
 
-            border-color:
-                rgba(0, 255, 102, 0.35);
+.exercise-card button {
+    width:calc(100% - 30px);
 
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.4),
-                0 0 25px rgba(0, 255, 102, 0.07);
-        }
+    margin:0 15px 15px;
+    padding:11px;
 
+    color:#001b08;
 
-        .stat-icon {
-            font-size: 25px;
+    background:var(--green);
 
-            margin-bottom: 14px;
+    border:none;
+    border-radius:10px;
 
-            filter:
-                drop-shadow(
-                    0 0 8px
-                    rgba(0, 255, 102, 0.25)
-                );
-        }
+    font-weight:900;
 
+    transition:.2s ease;
+}
 
-        .stat-card small {
-            display: block;
+.exercise-card button:hover {
+    background:var(--green-3);
 
-            color: var(--muted);
+    box-shadow:
+        0 0 18px rgba(0,255,102,.25);
 
-            font-size: 11px;
-            font-weight: 700;
+    transform:translateY(-2px);
+}
 
-            margin-bottom: 5px;
-        }
+/* =========================================================
+   WORKOUT SCREEN
+========================================================= */
 
+.back-button {
+    display:inline-flex;
+    margin-bottom:22px;
+}
 
-        .stat-card strong {
-            color: #ffffff;
+.workout-layout {
+    display:grid;
 
-            font-size: 22px;
-        }
+    grid-template-columns:
+        minmax(0,1.4fr)
+        minmax(300px,.8fr);
 
+    gap:22px;
+    align-items:start;
+}
 
-        /* =========================================================
-           WATER
-        ========================================================= */
+.workout-media {
+    overflow:hidden;
 
-        .water-card {
-            padding: 24px;
+    border:
+        1px solid rgba(0,255,102,.14);
 
-            margin-bottom: 18px;
+    border-radius:22px;
 
-            border:
-                1px solid rgba(0, 255, 102, 0.13);
+    background:#030603;
 
-            border-radius: 21px;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.4);
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #0c180f,
-                    #050a06
-                );
+.workout-media img {
+    width:100%;
+    display:block;
 
-            box-shadow:
-                0 12px 35px rgba(0, 0, 0, 0.3);
-        }
+    max-height:560px;
 
+    object-fit:contain;
+    background:#020402;
+}
 
-        .water-top {
-            display: flex;
+.gif-placeholder.large {
+    min-height:420px;
 
-            align-items: center;
-            justify-content: space-between;
+    display:grid;
+    place-items:center;
 
-            gap: 20px;
+    padding:30px;
 
-            margin-bottom: 20px;
-        }
+    text-align:center;
+    color:var(--muted);
 
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,102,.06),
+            transparent 60%
+        );
+}
 
-        .water-title {
-            display: flex;
+.gif-placeholder.large strong {
+    display:block;
 
-            align-items: center;
+    color:var(--green);
+    font-size:22px;
 
-            gap: 13px;
-        }
+    margin-bottom:7px;
+}
 
+.gif-placeholder.large span {
+    font-size:12px;
+}
 
-        .water-title > span {
-            display: grid;
-            place-items: center;
+.workout-info {
+    margin-top:17px;
+    padding:23px;
 
-            width: 48px;
-            height: 48px;
+    background:
+        linear-gradient(
+            145deg,
+            #0b150d,
+            #050a06
+        );
 
-            border-radius: 14px;
+    border:
+        1px solid rgba(0,255,102,.11);
 
-            background:
-                rgba(0, 255, 102, 0.07);
+    border-radius:19px;
+}
 
-            border:
-                1px solid rgba(0, 255, 102, 0.18);
+.workout-info h1 {
+    color:#fff;
+    font-size:28px;
+    margin-bottom:9px;
+}
 
-            font-size: 22px;
-        }
+.workout-info p {
+    color:var(--muted);
 
+    line-height:1.65;
+    font-size:13px;
+}
 
-        .water-title h2 {
-            font-size: 18px;
+.exercise-meta {
+    display:flex;
+    flex-wrap:wrap;
 
-            margin-bottom: 3px;
-        }
+    gap:8px;
+    margin-top:16px;
+}
 
+.badge {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
 
-        .water-title small {
-            color: var(--muted);
+    padding:8px 11px;
 
-            font-size: 11px;
-        }
+    color:var(--green);
 
+    background:
+        rgba(0,255,102,.045);
 
-        .water-counter {
-            color: var(--green);
+    border:
+        1px solid rgba(0,255,102,.15);
 
-            font-size: 24px;
-            font-weight: 950;
+    border-radius:999px;
 
-            text-shadow:
-                0 0 12px rgba(0, 255, 102, 0.3);
-        }
+    font-size:10px;
+    font-weight:900;
+}
 
+/* =========================================================
+   TIMER
+========================================================= */
 
-        .water-counter span {
-            font-size: 32px;
-        }
+.timer-box {
+    padding:28px;
 
+    text-align:center;
 
-        .water-bar {
-            height: 13px;
+    background:
+        linear-gradient(
+            145deg,
+            #0d190f,
+            #050a06
+        );
 
-            background:
-                #020502;
+    border:
+        1px solid rgba(0,255,102,.17);
 
-            border:
-                1px solid rgba(0, 255, 102, 0.10);
+    border-radius:22px;
 
-            border-radius: 999px;
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.4);
+}
 
-            overflow: hidden;
+.timer-status {
+    color:var(--green);
 
-            margin-bottom: 16px;
-        }
+    font-size:10px;
+    font-weight:950;
+    letter-spacing:2px;
 
+    text-shadow:
+        0 0 10px rgba(0,255,102,.35);
+}
 
-        .water-progress {
-            width: 0%;
+.timer {
+    margin:22px 0;
 
-            height: 100%;
+    color:#fff;
 
-            border-radius: inherit;
+    font-size:92px;
+    line-height:.9;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #00b84b,
-                    var(--green),
-                    #79ffad
-                );
+    font-weight:950;
+    letter-spacing:-5px;
 
-            box-shadow:
-                0 0 16px rgba(0, 255, 102, 0.55);
+    text-shadow:
+        0 0 20px rgba(0,255,102,.16);
+}
 
-            transition:
-                width 0.5s ease;
-        }
+.timer.work {
+    color:var(--green);
 
+    text-shadow:
+        0 0 15px rgba(0,255,102,.45),
+        0 0 45px rgba(0,255,102,.15);
+}
 
-        .water-buttons {
-            display: flex;
+.timer-controls {
+    display:grid;
 
-            flex-wrap: wrap;
+    grid-template-columns:
+        repeat(3,1fr);
 
-            gap: 9px;
-        }
+    gap:8px;
+}
 
+.timer-btn {
+    min-height:43px;
+    padding:8px;
 
-        .btn-water {
-            padding: 10px 14px;
+    color:var(--green);
 
-            color: var(--green);
+    background:
+        rgba(0,255,102,.045);
 
-            background:
-                rgba(0, 255, 102, 0.045);
+    border:
+        1px solid rgba(0,255,102,.15);
 
-            border:
-                1px solid rgba(0, 255, 102, 0.16);
+    border-radius:10px;
 
-            border-radius: 10px;
+    font-size:11px;
+    font-weight:900;
 
-            font-size: 12px;
-            font-weight: 800;
+    transition:.2s ease;
+}
 
-            transition:
-                0.2s ease;
-        }
+.timer-btn:hover {
+    transform:translateY(-2px);
 
+    border-color:
+        rgba(0,255,102,.45);
 
-        .btn-water:hover {
-            background:
-                rgba(0, 255, 102, 0.10);
+    background:
+        rgba(0,255,102,.09);
 
-            border-color:
-                rgba(0, 255, 102, 0.45);
+    box-shadow:
+        0 0 18px rgba(0,255,102,.10);
+}
 
-            transform:
-                translateY(-2px);
+.timer-btn:active {
+    transform:scale(.94);
+}
 
-            box-shadow:
-                0 0 18px rgba(0, 255, 102, 0.09);
-        }
+.timer-btn.primary {
+    color:#001b08;
 
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-2)
+        );
 
-        .btn-water:active {
-            transform:
-                scale(0.94);
-        }
+    border-color:var(--green);
 
+    box-shadow:
+        0 0 20px rgba(0,255,102,.15);
+}
 
-        /* =========================================================
-           PROGRESS
-        ========================================================= */
+.calorie-big {
+    margin-top:23px;
+    padding-top:18px;
 
-        .progress-box {
-            margin-bottom: 35px;
+    border-top:
+        1px solid rgba(0,255,102,.08);
 
-            padding: 20px;
+    color:var(--muted);
+    font-size:11px;
+}
 
-            border:
-                1px solid rgba(0, 255, 102, 0.12);
+.calorie-big strong {
+    display:block;
 
-            border-radius: 18px;
+    margin-top:4px;
 
-            background:
-                rgba(8, 16, 9, 0.8);
-        }
+    color:#fff;
+    font-size:20px;
+}
 
+.calorie-big strong span {
+    color:var(--green);
+}
 
-        .progress-header {
-            display: flex;
+/* =========================================================
+   REST
+========================================================= */
 
-            justify-content: space-between;
+.rest-box {
+    margin-top:17px;
+}
 
-            margin-bottom: 12px;
+.rest-number {
+    margin:20px 0;
 
-            font-size: 13px;
-        }
+    color:#fff;
+    font-size:64px;
+    font-weight:950;
 
+    text-shadow:
+        0 0 20px rgba(0,255,102,.15);
+}
 
-        .progress-header strong {
-            color: #ffffff;
-        }
+.rest-box .timer-btn {
+    width:100%;
+}
 
+.complete-button {
+    margin-top:17px;
+    color:#001b08;
+}
 
-        .progress-header span {
-            color: var(--green);
+/* =========================================================
+   TOAST
+========================================================= */
 
-            font-weight: 900;
-        }
+.toast {
+    position:fixed;
 
+    right:22px;
+    bottom:22px;
 
-        .progress-bar {
-            height: 10px;
+    z-index:999;
 
-            background:
-                #020502;
+    max-width:320px;
 
-            border-radius: 999px;
+    padding:14px 18px;
 
-            overflow: hidden;
-        }
+    color:#001b08;
 
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--green-2)
+        );
 
-        .progress-fill {
-            width: 0%;
+    border-radius:13px;
 
-            height: 100%;
+    font-size:13px;
+    font-weight:950;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--green-dark),
-                    var(--green),
-                    var(--green-3)
-                );
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.5),
+        0 0 25px rgba(0,255,102,.30);
 
-            border-radius: inherit;
+    transform:translateY(130px);
+    opacity:0;
 
-            box-shadow:
-                0 0 16px rgba(0, 255, 102, 0.5);
+    pointer-events:none;
 
-            transition:
-                width 0.6s ease;
-        }
+    transition:.35s ease;
+}
 
+.toast.show {
+    transform:translateY(0);
+    opacity:1;
+}
 
-        /* =========================================================
-           SECTION TITLES
-        ========================================================= */
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
-        .section-title {
-            position: relative;
+@keyframes screenIn {
+    from {
+        opacity:0;
+        transform:translateY(18px);
+    }
 
-            margin: 34px 0 16px;
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-            color: #ffffff;
+@keyframes resultIn {
+    from {
+        opacity:0;
+        transform:
+            translateY(15px)
+            scale(.98);
+    }
 
-            font-size: 22px;
+    to {
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
 
-            font-weight: 900;
-        }
+@keyframes badgeFloat {
+    0%,100% {
+        transform:translateY(0);
+    }
 
+    50% {
+        transform:translateY(-3px);
+    }
+}
 
-        .section-title::after {
-            content: "";
+@keyframes onlinePulse {
+    0%,100% {
+        opacity:1;
 
-            display: inline-block;
+        box-shadow:
+            0 0 7px var(--green),
+            0 0 15px var(--green);
+    }
 
-            width: 35px;
-            height: 3px;
+    50% {
+        opacity:.5;
 
-            margin-left: 10px;
+        box-shadow:
+            0 0 3px var(--green);
+    }
+}
 
-            vertical-align: middle;
+@keyframes logoLine {
+    0%,100% {
+        width:32px;
+    }
 
-            background:
-                var(--green);
+    50% {
+        width:52px;
+    }
+}
 
-            border-radius: 10px;
+@keyframes numberGlow {
+    0%,100% {
+        text-shadow:
+            0 0 12px rgba(0,255,102,.45),
+            0 0 30px rgba(0,255,102,.18);
+    }
 
-            box-shadow:
-                0 0 10px var(--green);
-        }
+    50% {
+        text-shadow:
+            0 0 18px rgba(0,255,102,.70),
+            0 0 45px rgba(0,255,102,.25);
+    }
+}
 
+/* =========================================================
+   HOVER GLOW
+========================================================= */
 
-        /* =========================================================
-           DAYS
-        ========================================================= */
+.water-card,
+.progress-box,
+.timer-box,
+.workout-info,
+.profile-data-card {
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
 
-        .days {
-            display: grid;
+.water-card:hover,
+.progress-box:hover,
+.timer-box:hover,
+.workout-info:hover,
+.profile-data-card:hover {
+    border-color:
+        rgba(0,255,102,.25);
 
-            grid-template-columns:
-                repeat(10, 1fr);
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.45),
+        0 0 25px rgba(0,255,102,.04);
+}
 
-            gap: 8px;
-        }
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
+@media (max-width:1000px) {
 
-        .day-card {
-            position: relative;
+    .dashboard {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
-            min-height: 55px;
+    .categories {
+        grid-template-columns:
+            repeat(3,1fr);
+    }
 
-            display: grid;
-            place-items: center;
+    .exercise-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
-            color: var(--muted);
+    .days {
+        grid-template-columns:
+            repeat(6,1fr);
+    }
 
-            background:
-                #070d08;
+    .workout-layout {
+        grid-template-columns:1fr;
+    }
+}
 
-            border:
-                1px solid rgba(0, 255, 102, 0.10);
+@media (max-width:700px) {
 
-            border-radius: 10px;
+    .app {
+        padding:
+            0 14px 50px;
+    }
 
-            font-size: 12px;
-            font-weight: 900;
+    .header {
+        min-height:65px;
+    }
 
-            transition:
-                0.22s ease;
+    .logo {
+        font-size:25px;
+    }
 
-            cursor: pointer;
-        }
+    .header-profile {
+        font-size:10px;
+        padding:8px 10px;
+    }
 
+    .screen {
+        padding-top:30px;
+    }
 
-        .day-card:hover {
-            color: var(--green);
+    .hero h1 {
+        font-size:45px;
+        letter-spacing:-2.5px;
+    }
 
-            transform:
-                translateY(-3px);
+    .hero p {
+        font-size:14px;
+    }
 
-            border-color:
-                rgba(0, 255, 102, 0.35);
+    .profile-box,
+    .profile-data-card {
+        padding:21px;
+        border-radius:21px;
+    }
 
-            box-shadow:
-                0 0 18px rgba(0, 255, 102, 0.08);
-        }
+    .profile-options {
+        grid-template-columns:1fr;
+    }
 
+    .profile-option {
+        min-height:205px;
+    }
 
-        .day-card.completed,
-        .day-card.active {
-            color: #001b08;
+    .profile-data-header {
+        flex-wrap:wrap;
+    }
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    var(--green-2)
-                );
+    .profile-back-button {
+        width:100%;
+        justify-content:center;
+    }
 
-            border-color:
-                var(--green);
+    .bmi-form {
+        grid-template-columns:1fr;
+    }
 
-            box-shadow:
-                0 0 15px rgba(0, 255, 102, 0.30);
-        }
+    .bmi-button {
+        grid-column:auto;
+    }
 
+    .weight-summary {
+        grid-template-columns:1fr;
+    }
 
-        /* =========================================================
-           CATEGORIES
-        ========================================================= */
+    .goal-grid {
+        grid-template-columns:1fr;
+    }
 
-        .categories {
-            display: grid;
+    .dashboard {
+        grid-template-columns:
+            repeat(2,1fr);
 
-            grid-template-columns:
-                repeat(6, 1fr);
+        gap:10px;
+    }
 
-            gap: 12px;
-        }
+    .stat-card {
+        min-height:130px;
+        padding:16px;
+    }
 
+    .categories {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
-        .category {
-            position: relative;
+    .exercise-grid {
+        grid-template-columns:1fr;
+    }
 
-            min-height: 125px;
+    .days {
+        grid-template-columns:
+            repeat(5,1fr);
+    }
 
-            padding: 15px 10px;
+    .water-top {
+        align-items:flex-start;
+        flex-direction:column;
+    }
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    .water-counter {
+        align-self:flex-start;
+    }
 
-            gap: 6px;
+    .timer {
+        font-size:75px;
+    }
 
-            color: #dfffe8;
+    .timer-controls {
+        grid-template-columns:1fr;
+    }
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #0b160d,
-                    #050a06
-                );
+    .bmi-number {
+        font-size:52px;
+    }
 
-            border:
-                1px solid rgba(0, 255, 102, 0.11);
+    .bmi-scale-labels {
+        font-size:8px;
+    }
+}
 
-            border-radius: 17px;
+@media (max-width:430px) {
 
-            font-weight: 900;
+    .hero h1 {
+        font-size:38px;
+    }
 
-            overflow: hidden;
+    .dashboard {
+        grid-template-columns:
+            1fr 1fr;
+    }
 
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease,
-                color 0.25s ease;
-        }
+    .stat-card strong {
+        font-size:18px;
+    }
 
+    .days {
+        grid-template-columns:
+            repeat(4,1fr);
+    }
 
-        .category::before {
-            content: "";
+    .categories {
+        gap:8px;
+    }
 
-            position: absolute;
+    .category {
+        min-height:105px;
+        font-size:13px;
+    }
 
-            inset: 0;
+    .category-icon {
+        font-size:21px;
+    }
 
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(0, 255, 102, 0.12),
-                    transparent 60%
-                );
+    .water-buttons {
+        display:grid;
 
-            opacity: 0;
+        grid-template-columns:
+            1fr 1fr;
+    }
 
-            transition:
-                opacity 0.25s ease;
-        }
+    .btn-water {
+        width:100%;
+    }
 
+    .bmi-scale-labels span {
+        overflow:hidden;
+    }
+}
 
-        .category:hover {
-            transform:
-                translateY(-5px);
+@media (prefers-reduced-motion:reduce) {
 
-            color: var(--green);
+    *,
+    *::before,
+    *::after {
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+}
 
-            border-color:
-                rgba(0, 255, 102, 0.40);
-
-            box-shadow:
-                0 12px 28px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(0, 255, 102, 0.07);
-        }
-
-
-        .category:hover::before {
-            opacity: 1;
-        }
-
-
-        .category:active {
-            transform:
-                scale(0.95);
-        }
-
-
-        .category.active {
-            color: #001b08;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    var(--green-2)
-                );
-
-            border-color:
-                var(--green);
-
-            box-shadow:
-                0 0 20px rgba(0, 255, 102, 0.32),
-                0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-
-
-        .category.active::before {
-            opacity: 0;
-        }
-
-
-        .category-icon {
-            position: relative;
-            z-index: 2;
-
-            font-size: 25px;
-
-            filter:
-                drop-shadow(
-                    0 0 6px
-                    rgba(0, 255, 102, 0.25)
-                );
-        }
-
-
-        .category small {
-            position: relative;
-            z-index: 2;
-
-            opacity: 0.65;
-
-            font-size: 9px;
-        }
-
-
-        /* =========================================================
-           EXERCISE GRID
-        ========================================================= */
-
-        .exercise-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 17px;
-        }
-
-
-        .exercise-card {
-            position: relative;
-
-            overflow: hidden;
-
-            padding: 0;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0c170e,
-                    #050a06
-                );
-
-            border:
-                1px solid rgba(0, 255, 102, 0.11);
-
-            border-radius: 19px;
-
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.3);
-
-            transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-
-        .exercise-card:hover {
-            transform:
-                translateY(-7px);
-
-            border-color:
-                rgba(0, 255, 102, 0.38);
-
-            box-shadow:
-                0 18px 40px rgba(0, 0, 0, 0.45),
-                0 0 25px rgba(0, 255, 102, 0.07);
-        }
-
-
-        .exercise-card img,
-        .exercise-image {
-            width: 100%;
-
-            height: 190px;
-
-            object-fit: cover;
-
-            display: block;
-
-            background:
-                #030603;
-        }
-
-
-        .exercise-card-content {
-            padding: 18px;
-        }
-
-
-        .exercise-card h3 {
-            color: #ffffff;
-
-            font-size: 17px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .exercise-card p {
-            color: var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.5;
-        }
-
-
-        .exercise-card button {
-            width: calc(100% - 30px);
-
-            margin: 0 15px 15px;
-
-            padding: 11px;
-
-            color: #001b08;
-
-            background:
-                var(--green);
-
-            border: none;
-
-            border-radius: 10px;
-
-            font-weight: 900;
-
-            transition:
-                0.2s ease;
-        }
-
-
-        .exercise-card button:hover {
-            background:
-                var(--green-3);
-
-            box-shadow:
-                0 0 18px rgba(0, 255, 102, 0.25);
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        /* =========================================================
-           WORKOUT SCREEN
-        ========================================================= */
-
-        .back-button {
-            display: inline-flex;
-
-            margin-bottom: 22px;
-        }
-
-
-        .workout-layout {
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1.4fr)
-                minmax(300px, 0.8fr);
-
-            gap: 22px;
-
-            align-items: start;
-        }
-
-
-        .workout-media {
-            overflow: hidden;
-
-            border:
-                1px solid rgba(0, 255, 102, 0.14);
-
-            border-radius: 22px;
-
-            background:
-                #030603;
-
-            box-shadow:
-                0 20px 45px rgba(0, 0, 0, 0.4);
-        }
-
-
-        .workout-media img {
-            width: 100%;
-
-            display: block;
-
-            max-height: 560px;
-
-            object-fit: contain;
-
-            background:
-                #020402;
-        }
-
-
-        .gif-placeholder.large {
-            min-height: 420px;
-
-            display: grid;
-            place-items: center;
-
-            padding: 30px;
-
-            text-align: center;
-
-            color: var(--muted);
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 255, 102, 0.06),
-                    transparent 60%
-                );
-        }
-
-
-        .gif-placeholder.large strong {
-            display: block;
-
-            color: var(--green);
-
-            font-size: 22px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .gif-placeholder.large span {
-            font-size: 12px;
-        }
-
-
-        .workout-info {
-            margin-top: 17px;
-
-            padding: 23px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0b150d,
-                    #050a06
-                );
-
-            border:
-                1px solid rgba(0, 255, 102, 0.11);
-
-            border-radius: 19px;
-        }
-
-
-        .workout-info h1 {
-            color: #ffffff;
-
-            font-size: 28px;
-
-            margin-bottom: 9px;
-        }
-
-
-        .workout-info p {
-            color: var(--muted);
-
-            line-height: 1.65;
-
-            font-size: 13px;
-        }
-
-
-        .exercise-meta {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-top: 16px;
-        }
-
-
-        .badge {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 5px;
-
-            padding: 8px 11px;
-
-            color: var(--green);
-
-            background:
-                rgba(0, 255, 102, 0.045);
-
-            border:
-                1px solid rgba(0, 255, 102, 0.15);
-
-            border-radius: 999px;
-
-            font-size: 10px;
-            font-weight: 900;
-        }
-
-
-        /* =========================================================
-           TIMER
-        ========================================================= */
-
-        .timer-box {
-            padding: 28px;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0d190f,
-                    #050a06
-                );
-
-            border:
-                1px solid rgba(0, 255, 102, 0.17);
-
-            border-radius: 22px;
-
-            box-shadow:
-                0 18px 45px rgba(0, 0, 0, 0.4);
-        }
-
-
-        .timer-status {
-            color: var(--green);
-
-            font-size: 10px;
-            font-weight: 950;
-
-            letter-spacing: 2px;
-
-            text-shadow:
-                0 0 10px rgba(0, 255, 102, 0.35);
-        }
-
-
-        .timer {
-            margin: 22px 0;
-
-            color: #ffffff;
-
-            font-size: 92px;
-            line-height: 0.9;
-
-            font-weight: 950;
-
-            letter-spacing: -5px;
-
-            text-shadow:
-                0 0 20px rgba(0, 255, 102, 0.16);
-        }
-
-
-        .timer.work {
-            color: var(--green);
-
-            text-shadow:
-                0 0 15px rgba(0, 255, 102, 0.45),
-                0 0 45px rgba(0, 255, 102, 0.15);
-        }
-
-
-        .timer-controls {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 8px;
-        }
-
-
-        .timer-btn {
-            min-height: 43px;
-
-            padding: 8px;
-
-            color: var(--green);
-
-            background:
-                rgba(0, 255, 102, 0.045);
-
-            border:
-                1px solid rgba(0, 255, 102, 0.15);
-
-            border-radius: 10px;
-
-            font-size: 11px;
-            font-weight: 900;
-
-            transition:
-                0.2s ease;
-        }
-
-
-        .timer-btn:hover {
-            transform:
-                translateY(-2px);
-
-            border-color:
-                rgba(0, 255, 102, 0.45);
-
-            background:
-                rgba(0, 255, 102, 0.09);
-
-            box-shadow:
-                0 0 18px rgba(0, 255, 102, 0.10);
-        }
-
-
-        .timer-btn:active {
-            transform:
-                scale(0.94);
-        }
-
-
-        .timer-btn.primary {
-            color: #001b08;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    var(--green-2)
-                );
-
-            border-color:
-                var(--green);
-
-            box-shadow:
-                0 0 20px rgba(0, 255, 102, 0.15);
-        }
-
-
-        .calorie-big {
-            margin-top: 23px;
-
-            padding-top: 18px;
-
-            border-top:
-                1px solid rgba(0, 255, 102, 0.08);
-
-            color: var(--muted);
-
-            font-size: 11px;
-        }
-
-
-        .calorie-big strong {
-            display: block;
-
-            margin-top: 4px;
-
-            color: #ffffff;
-
-            font-size: 20px;
-        }
-
-
-        .calorie-big strong span {
-            color: var(--green);
-        }
-
-
-        /* =========================================================
-           REST
-        ========================================================= */
-
-        .rest-box {
-            margin-top: 17px;
-        }
-
-
-        .rest-number {
-            margin: 20px 0;
-
-            color: #ffffff;
-
-            font-size: 64px;
-
-            font-weight: 950;
-
-            text-shadow:
-                0 0 20px rgba(0, 255, 102, 0.15);
-        }
-
-
-        .rest-box .timer-btn {
-            width: 100%;
-        }
-
-
-        /* =========================================================
-           COMPLETE
-        ========================================================= */
-
-        .complete-button {
-            margin-top: 17px;
-
-            color: #001b08;
-        }
-
-
-        /* =========================================================
-           TOAST
-        ========================================================= */
-
-        .toast {
-            position: fixed;
-
-            right: 22px;
-            bottom: 22px;
-
-            z-index: 999;
-
-            max-width: 320px;
-
-            padding: 14px 18px;
-
-            color: #001b08;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    var(--green-2)
-                );
-
-            border-radius: 13px;
-
-            font-size: 13px;
-            font-weight: 950;
-
-            box-shadow:
-                0 10px 40px rgba(0, 0, 0, 0.5),
-                0 0 25px rgba(0, 255, 102, 0.30);
-
-            transform:
-                translateY(130px);
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transition:
-                0.35s ease;
-        }
-
-
-        .toast.show {
-            transform:
-                translateY(0);
-
-            opacity: 1;
-        }
-
-
-        /* =========================================================
-           ANIMATIONS
-        ========================================================= */
-
-        @keyframes screenIn {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        @keyframes resultIn {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(15px)
-                    scale(0.98);
-            }
-
-            to {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-
-        @keyframes badgeFloat {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-3px);
-            }
-        }
-
-
-        @keyframes onlinePulse {
-
-            0%,
-            100% {
-                opacity: 1;
-
-                box-shadow:
-                    0 0 7px var(--green),
-                    0 0 15px var(--green);
-            }
-
-            50% {
-                opacity: 0.5;
-
-                box-shadow:
-                    0 0 3px var(--green);
-            }
-        }
-
-
-        @keyframes logoLine {
-
-            0%,
-            100% {
-                width: 32px;
-            }
-
-            50% {
-                width: 52px;
-            }
-        }
-
-
-        @keyframes numberGlow {
-
-            0%,
-            100% {
-                text-shadow:
-                    0 0 12px rgba(0, 255, 102, 0.45),
-                    0 0 30px rgba(0, 255, 102, 0.18);
-            }
-
-            50% {
-                text-shadow:
-                    0 0 18px rgba(0, 255, 102, 0.70),
-                    0 0 45px rgba(0, 255, 102, 0.25);
-            }
-        }
-
-
-        /* =========================================================
-           HOVER GLOW FOR IMPORTANT ELEMENTS
-        ========================================================= */
-
-        .water-card,
-        .progress-box,
-        .timer-box,
-        .workout-info,
-        .profile-data-card {
-            transition:
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-
-        .water-card:hover,
-        .progress-box:hover,
-        .timer-box:hover,
-        .workout-info:hover,
-        .profile-data-card:hover {
-            border-color:
-                rgba(0, 255, 102, 0.25);
-
-            box-shadow:
-                0 18px 50px rgba(0, 0, 0, 0.45),
-                0 0 25px rgba(0, 255, 102, 0.04);
-        }
-
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 1000px) {
-
-            .dashboard {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-
-            .categories {
-                grid-template-columns:
-                    repeat(3, 1fr);
-            }
-
-
-            .exercise-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-
-            .days {
-                grid-template-columns:
-                    repeat(6, 1fr);
-            }
-
-
-            .workout-layout {
-                grid-template-columns:
-                    1fr;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .app {
-                padding:
-                    0 14px 50px;
-            }
-
-
-            .header {
-                min-height: 65px;
-            }
-
-
-            .logo {
-                font-size: 25px;
-            }
-
-
-            .header-profile {
-                font-size: 10px;
-
-                padding:
-                    8px 10px;
-            }
-
-
-            .screen {
-                padding-top: 30px;
-            }
-
-
-            .hero h1 {
-                font-size: 45px;
-
-                letter-spacing:
-                    -2.5px;
-            }
-
-
-            .hero p {
-                font-size: 14px;
-            }
-
-
-            .profile-box,
-            .profile-data-card {
-                padding: 21px;
-
-                border-radius: 21px;
-            }
-
-
-            .profile-options {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .profile-option {
-                min-height: 205px;
-            }
-
-
-            .profile-data-header {
-                flex-wrap: wrap;
-            }
-
-
-            .profile-back-button {
-                width: 100%;
-
-                justify-content: center;
-            }
-
-
-            .bmi-form {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .bmi-button {
-                grid-column:
-                    auto;
-            }
-
-
-            .weight-summary {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .goal-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .dashboard {
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                gap: 10px;
-            }
-
-
-            .stat-card {
-                min-height: 130px;
-
-                padding: 16px;
-            }
-
-
-            .categories {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-
-            .exercise-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .days {
-                grid-template-columns:
-                    repeat(5, 1fr);
-            }
-
-
-            .water-top {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-
-            .water-counter {
-                align-self: flex-start;
-            }
-
-
-            .timer {
-                font-size: 75px;
-            }
-
-
-            .timer-controls {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .bmi-number {
-                font-size: 52px;
-            }
-
-
-            .bmi-scale-labels {
-                font-size: 8px;
-            }
-
-        }
-
-
-        @media (max-width: 430px) {
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-
-            .dashboard {
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-
-            .stat-card strong {
-                font-size: 18px;
-            }
-
-
-            .days {
-                grid-template-columns:
-                    repeat(4, 1fr);
-            }
-
-
-            .categories {
-                gap: 8px;
-            }
-
-
-            .category {
-                min-height: 105px;
-
-                font-size: 13px;
-            }
-
-
-            .category-icon {
-                font-size: 21px;
-            }
-
-
-            .water-buttons {
-                display: grid;
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-
-            .btn-water {
-                width: 100%;
-            }
-
-
-            .bmi-scale-labels span {
-                overflow: hidden;
-            }
-
-        }
-
-
-        /* =========================================================
-           REDUCED MOTION
-        ========================================================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
-
 
 <body>
 
 <div class="app">
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<header class="header">
 
-    <header class="header">
+    <div class="logo">
+        FIT<span>30</span>
+    </div>
 
-        <div class="logo">
-            FIT<span>30</span>
+    <div class="header-profile">
+        <span id="headerProfile">
+            Choose your profile
+        </span>
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PROFILE SELECTION
+========================================================= -->
+
+<section id="profileScreen" class="screen active">
+
+    <div class="hero">
+
+        <div class="welcome-badge">
+            FIT30 • 30 DAY CHALLENGE
         </div>
 
-        <div class="header-profile">
-            <span id="headerProfile">
-                Choose your profile
+        <h1>
+            Your
+            <span class="gradient">
+                30-day
             </span>
-        </div>
+            challenge
+        </h1>
 
-    </header>
+        <p>
+            Start by choosing your profile.
+            We will use your information to personalize
+            your Fit30 experience.
+        </p>
 
-
-    <!-- =========================
-         PROFILE SELECTION SCREEN
-    ========================== -->
-
-    <section id="profileScreen" class="screen active">
-
-        <div class="hero">
-
-            <div class="welcome-badge">
-                FIT30 • 30 DAY CHALLENGE
-            </div>
-
-            <h1>
-                Your
-                <span class="gradient">
-                    30-day
-                </span>
-                challenge
-            </h1>
-
-            <p>
-                Start by choosing your profile.
-                We will use your information to personalize
-                your Fit30 experience.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="profile-box">
+    <div class="profile-box">
 
-            <h2>
-                👤 Choose your profile
-            </h2>
+        <h2>
+            👤 Choose your profile
+        </h2>
 
-            <p class="profile-selection-description">
-                Select your profile to continue.
-            </p>
-
-
-            <div class="profile-options">
-
-                <button
-                    class="profile-option"
-                    id="femaleProfile"
-                    type="button"
-                    onclick="selectProfile('mulher')">
-
-                    <div class="profile-icon">
-                        👩
-                    </div>
-
-                    <h3>
-                        Woman
-                    </h3>
-
-                    <p>
-                        Continue with the female profile.
-                    </p>
-
-                </button>
+        <p class="profile-selection-description">
+            Select your profile to continue.
+        </p>
 
 
-                <button
-                    class="profile-option"
-                    id="maleProfile"
-                    type="button"
-                    onclick="selectProfile('homem')">
-
-                    <div class="profile-icon">
-                        👨
-                    </div>
-
-                    <h3>
-                        Man
-                    </h3>
-
-                    <p>
-                        Continue with the male profile.
-                    </p>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROFILE DATA / BMI SCREEN
-    ========================== -->
-
-    <section
-        id="profileDataScreen"
-        class="screen">
-
-        <div class="profile-data-header">
+        <div class="profile-options">
 
             <button
+                class="profile-option"
+                id="femaleProfile"
                 type="button"
-                class="profile-back-button"
-                onclick="backToProfileSelection()">
+                onclick="selectProfile('mulher')">
 
-                ← Back
+                <div class="profile-icon">
+                    👩
+                </div>
 
-            </button>
-
-
-            <div class="profile-big-icon" id="profileBigIcon">
-                👩
-            </div>
-
-
-            <div>
-
-                <h1 id="profileDataTitle">
-                    Your profile
-                </h1>
-
-                <p id="profileDataSubtitle">
-                    Enter your information to personalize Fit30.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="profile-data-card">
-
-            <div class="card-description">
-
-                <h2>
-                    ⚖️ Your body information
-                </h2>
+                <h3>
+                    Woman
+                </h3>
 
                 <p>
-                    Enter your age, current weight and height
-                    to calculate your BMI.
+                    Continue with the female profile.
                 </p>
 
-            </div>
-
-
-            <div class="bmi-form">
-
-                <div class="bmi-field">
-
-                    <label for="bmiAge">
-                        Age
-                    </label>
-
-                    <input
-                        type="number"
-                        id="bmiAge"
-                        min="1"
-                        max="120"
-                        placeholder="Example: 25"
-                        autocomplete="off">
-
-                </div>
-
-
-                <div class="bmi-field">
-
-                    <label for="bmiWeight">
-                        Current weight
-                    </label>
-
-                    <div class="input-with-unit">
-
-                        <input
-                            type="number"
-                            id="bmiWeight"
-                            min="1"
-                            max="500"
-                            step="0.1"
-                            placeholder="Example: 70"
-                            autocomplete="off">
-
-                        <span class="input-unit">
-                            kg
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="bmi-field">
-
-                    <label for="bmiHeight">
-                        Height
-                    </label>
-
-                    <div class="input-with-unit">
-
-                        <input
-                            type="number"
-                            id="bmiHeight"
-                            min="50"
-                            max="250"
-                            step="0.1"
-                            placeholder="Example: 170"
-                            autocomplete="off">
-
-                        <span class="input-unit">
-                            cm
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="bmi-error"
-                id="bmiError">
-            </div>
-
-
-            <button
-                type="button"
-                class="bmi-button"
-                onclick="calculateBMI()">
-
-                Calculate my BMI
-
             </button>
 
 
-            <!-- =========================
-                 BMI RESULT
-            ========================== -->
+            <button
+                class="profile-option"
+                id="maleProfile"
+                type="button"
+                onclick="selectProfile('homem')">
 
-            <div
-                class="bmi-result"
-                id="bmiResult">
-
-                <div class="bmi-main-result">
-
-                    <span class="bmi-label">
-                        Your BMI
-                    </span>
-
-                    <div
-                        class="bmi-number"
-                        id="bmiNumber">
-
-                        0.0
-
-                    </div>
-
-                    <div
-                        class="bmi-classification"
-                        id="bmiClassification">
-
-                        -
-
-                    </div>
-
+                <div class="profile-icon">
+                    👨
                 </div>
 
+                <h3>
+                    Man
+                </h3>
 
-                <div class="bmi-scale">
-
-                    <div
-                        class="bmi-marker"
-                        id="bmiMarker">
-                    </div>
-
-                </div>
-
-
-                <div class="bmi-scale-labels">
-
-                    <span>
-                        Underweight
-                    </span>
-
-                    <span>
-                        Normal
-                    </span>
-
-                    <span>
-                        Overweight
-                    </span>
-
-                    <span>
-                        Obesity
-                    </span>
-
-                </div>
-
-
-                <p
-                    class="bmi-message"
-                    id="bmiMessage">
+                <p>
+                    Continue with the male profile.
                 </p>
 
-
-                <div
-                    class="weight-summary"
-                    id="weightSummary">
-
-                    <div class="weight-box">
-
-                        <span>
-                            Current weight
-                        </span>
-
-                        <strong id="currentWeightDisplay">
-                            0 kg
-                        </strong>
-
-                    </div>
-
-
-                    <div
-                        class="weight-box highlight"
-                        id="targetWeightBox">
-
-                        <span>
-                            Target weight
-                        </span>
-
-                        <strong id="bmiTargetWeight">
-                            0 kg
-                        </strong>
-
-                    </div>
-
-
-                    <div
-                        class="weight-box"
-                        id="weightDifferenceBox">
-
-                        <span>
-                            Weight difference
-                        </span>
-
-                        <strong id="bmiWeightDifference">
-                            0 kg
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="goal-box"
-                    id="goalBox">
-
-                    <h3>
-                        🎯 Your estimated goal
-                    </h3>
-
-                    <div class="goal-grid">
-
-                        <div class="goal-stat">
-
-                            <span>
-                                Monthly goal
-                            </span>
-
-                            <strong id="monthlyGoal">
-                                -
-                            </strong>
-
-                        </div>
-
-
-                        <div class="goal-stat">
-
-                            <span>
-                                Estimated time
-                            </span>
-
-                            <strong id="estimatedTime">
-                                -
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="bmi-notice"
-                    id="bmiNotice">
-
-                    ⚠️ For people under 18, BMI should be
-                    interpreted using age- and sex-specific
-                    growth charts. Fit30 does not set a
-                    weight-loss target for minors.
-
-                </div>
-
-
-                <button
-                    type="button"
-                    id="continueFit30"
-                    class="continue-fit30"
-                    onclick="continueToFit30()">
-
-                    Continue to Fit30 →
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         MAIN HOME / DASHBOARD
-    ========================== -->
-
-    <section
-        id="homeScreen"
-        class="screen">
-
-        <div class="hero">
-
-            <h1>
-                Your
-                <span class="gradient">
-                    30-day
-                </span>
-                challenge
-            </h1>
-
-            <p>
-                Work out every day, track your progress,
-                monitor your hydration and build
-                a more active routine.
-            </p>
-
-        </div>
-
-
-        <div class="dashboard">
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    🔥
-                </div>
-
-                <small>
-                    Calories
-                </small>
-
-                <strong id="totalCalories">
-                    0 kcal
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    ✅
-                </div>
-
-                <small>
-                    Exercises
-                </small>
-
-                <strong id="totalExercises">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    📅
-                </div>
-
-                <small>
-                    Completed days
-                </small>
-
-                <strong id="completedDays">
-                    0/30
-                </strong>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    💧
-                </div>
-
-                <small>
-                    Water today
-                </small>
-
-                <strong id="waterDashboard">
-                    0 ml
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="water-card">
-
-            <div class="water-top">
-
-                <div class="water-title">
-
-                    <span>
-                        💧
-                    </span>
-
-                    <div>
-
-                        <h2>
-                            Water tracker
-                        </h2>
-
-                        <small>
-                            Track your daily hydration
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="water-counter">
-
-                    <span id="waterAmount">
-                        0
-                    </span>
-
-                    ml
-
-                </div>
-
-            </div>
-
-
-            <div class="water-bar">
-
-                <div
-                    class="water-progress"
-                    id="waterProgress">
-                </div>
-
-            </div>
-
-
-            <div class="water-buttons">
-
-                <button
-                    type="button"
-                    class="btn-water"
-                    onclick="addWater(250)">
-
-                    +250 ml
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn-water"
-                    onclick="addWater(500)">
-
-                    +500 ml
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn-water"
-                    onclick="removeWater()">
-
-                    −250 ml
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="btn-water"
-                    onclick="resetWater()">
-
-                    Reset
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="progress-box">
-
-            <div class="progress-header">
-
-                <strong>
-                    Challenge progress
-                </strong>
-
-                <span id="progressText">
-                    0%
-                </span>
-
-            </div>
-
-
-            <div class="progress-bar">
-
-                <div
-                    class="progress-fill"
-                    id="mainProgress">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <h2 class="section-title">
-            🗓️ 30-Day Challenge
-        </h2>
-
-        <div
-            class="days"
-            id="daysContainer">
-        </div>
-
-
-        <h2 class="section-title">
-            🏋️ Categories
-        </h2>
-
-        <div class="categories">
-
-            <button
-                type="button"
-                class="category active"
-                onclick="filterCategory('Todos', this)">
-
-                <div class="category-icon">
-                    🔥
-                </div>
-
-                All
-
-                <small>
-                    30 exercises
-                </small>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="category"
-                onclick="filterCategory('Aquecimento', this)">
-
-                <div class="category-icon">
-                    🏃
-                </div>
-
-                Warm-up
-
-                <small>
-                    5 exercises
-                </small>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="category"
-                onclick="filterCategory('Pernas e Glúteos', this)">
-
-                <div class="category-icon">
-                    🦵
-                </div>
-
-                Legs
-
-                <small>
-                    10 exercises
-                </small>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="category"
-                onclick="filterCategory('Abdômen', this)">
-
-                <div class="category-icon">
-                    💪
-                </div>
-
-                Abs
-
-                <small>
-                    7 exercises
-                </small>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="category"
-                onclick="filterCategory('Cardio', this)">
-
-                <div class="category-icon">
-                    ❤️
-                </div>
-
-                Cardio
-
-                <small>
-                    5 exercises
-                </small>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="category"
-                onclick="filterCategory('Corpo inteiro', this)">
-
-                <div class="category-icon">
-                    ⚡
-                </div>
-
-                Full Body
-
-                <small>
-                    3 exercises
-                </small>
-
             </button>
 
         </div>
 
+    </div>
 
-        <h2 class="section-title">
-            Exercises
-        </h2>
-
-        <div
-            class="exercise-grid"
-            id="exerciseGrid">
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- =========================
-         EXERCISE SCREEN
-    ========================== -->
+<!-- =========================================================
+     PROFILE DATA / BMI
+========================================================= -->
 
-    <section
-        id="exerciseScreen"
-        class="screen">
+<section
+    id="profileDataScreen"
+    class="screen">
+
+    <div class="profile-data-header">
 
         <button
             type="button"
-            class="back-button"
-            onclick="goHome()">
+            class="profile-back-button"
+            onclick="backToProfileSelection()">
 
-            ← Back to Home
+            ← Back
 
         </button>
 
 
-        <div class="workout-layout">
+        <div
+            class="profile-big-icon"
+            id="profileBigIcon">
 
-            <div>
+            👩
 
-                <div class="workout-media">
+        </div>
 
-                    <div id="workoutGifContainer">
 
-                        <div class="gif-placeholder large">
+        <div>
 
-                            <div>
+            <h1 id="profileDataTitle">
+                Your profile
+            </h1>
 
-                                <strong>
-                                    Exercise GIF
-                                </strong>
+            <p id="profileDataSubtitle">
+                Enter your information to personalize Fit30.
+            </p>
 
-                                <span>
-                                    Add the GIF URL
-                                    in the exercicios.js file
-                                </span>
+        </div>
 
-                            </div>
+    </div>
 
-                        </div>
 
-                    </div>
+    <div class="profile-data-card">
+
+        <div class="card-description">
+
+            <h2>
+                ⚖️ Your body information
+            </h2>
+
+            <p>
+                Enter your age, current weight and height
+                to calculate your BMI.
+            </p>
+
+        </div>
+
+
+        <div class="bmi-form">
+
+            <div class="bmi-field">
+
+                <label for="bmiAge">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="bmiAge"
+                    min="1"
+                    max="120"
+                    placeholder="Example: 25"
+                    autocomplete="off">
+
+            </div>
+
+
+            <div class="bmi-field">
+
+                <label for="bmiWeight">
+                    Current weight
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="bmiWeight"
+                        min="1"
+                        max="500"
+                        step="0.1"
+                        placeholder="Example: 70"
+                        autocomplete="off">
+
+                    <span class="input-unit">
+                        kg
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="bmi-field">
+
+                <label for="bmiHeight">
+                    Height
+                </label>
+
+                <div class="input-with-unit">
+
+                    <input
+                        type="number"
+                        id="bmiHeight"
+                        min="50"
+                        max="250"
+                        step="0.1"
+                        placeholder="Example: 170"
+                        autocomplete="off">
+
+                    <span class="input-unit">
+                        cm
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="bmi-error"
+            id="bmiError">
+        </div>
+
+
+        <button
+            type="button"
+            class="bmi-button"
+            onclick="calculateBMI()">
+
+            Calculate my BMI
+
+        </button>
+
+
+        <div
+            class="bmi-result"
+            id="bmiResult">
+
+            <div class="bmi-main-result">
+
+                <span class="bmi-label">
+                    Your BMI
+                </span>
+
+                <div
+                    class="bmi-number"
+                    id="bmiNumber">
+
+                    0.0
+
+                </div>
+
+                <div
+                    class="bmi-classification"
+                    id="bmiClassification">
+
+                    -
+
+                </div>
+
+            </div>
+
+
+            <div class="bmi-scale">
+
+                <div
+                    class="bmi-marker"
+                    id="bmiMarker">
+                </div>
+
+            </div>
+
+
+            <div class="bmi-scale-labels">
+
+                <span>
+                    Underweight
+                </span>
+
+                <span>
+                    Normal
+                </span>
+
+                <span>
+                    Overweight
+                </span>
+
+                <span>
+                    Obesity
+                </span>
+
+            </div>
+
+
+            <p
+                class="bmi-message"
+                id="bmiMessage">
+            </p>
+
+
+            <div
+                class="weight-summary"
+                id="weightSummary">
+
+                <div class="weight-box">
+
+                    <span>
+                        Current weight
+                    </span>
+
+                    <strong id="currentWeightDisplay">
+                        0 kg
+                    </strong>
 
                 </div>
 
 
-                <div class="workout-info">
+                <div
+                    class="weight-box highlight"
+                    id="targetWeightBox">
 
-                    <h1 id="workoutName">
-                        Exercise
-                    </h1>
+                    <span>
+                        Target weight
+                    </span>
 
-                    <p id="workoutDescription">
-                        Description
-                    </p>
+                    <strong id="bmiTargetWeight">
+                        0 kg
+                    </strong>
+
+                </div>
 
 
-                    <div class="exercise-meta">
+                <div
+                    class="weight-box"
+                    id="weightDifferenceBox">
 
-                        <span
-                            class="badge"
-                            id="workoutCategory">
+                    <span>
+                        Weight difference
+                    </span>
 
-                            Category
+                    <strong id="bmiWeightDifference">
+                        0 kg
+                    </strong>
 
+                </div>
+
+            </div>
+
+
+            <div
+                class="goal-box"
+                id="goalBox">
+
+                <h3>
+                    🎯 Your estimated goal
+                </h3>
+
+                <div class="goal-grid">
+
+                    <div class="goal-stat">
+
+                        <span>
+                            Monthly goal
                         </span>
 
+                        <strong id="monthlyGoal">
+                            -
+                        </strong>
 
-                        <span class="badge">
+                    </div>
 
-                            🔥
 
-                            <span id="workoutCalories">
-                                0
-                            </span>
+                    <div class="goal-stat">
 
-                            kcal
-
+                        <span>
+                            Estimated time
                         </span>
 
-
-                        <span class="badge">
-
-                            ⏱️
-
-                            <span id="workoutDuration">
-                                30
-                            </span>
-
-                            s
-
-                        </span>
+                        <strong id="estimatedTime">
+                            -
+                        </strong>
 
                     </div>
 
@@ -3940,723 +3027,1523 @@
             </div>
 
 
-            <div>
+            <div
+                class="bmi-notice"
+                id="bmiNotice">
 
-                <div class="timer-box">
+                ⚠️ For people under 18, BMI should be
+                interpreted using age- and sex-specific
+                growth charts. Fit30 does not set a
+                weight-loss target for minors.
 
-                    <div
-                        class="timer-status"
-                        id="timerStatus">
-
-                        EXERCISE TIME
-
-                    </div>
-
-
-                    <div
-                        class="timer work"
-                        id="timer">
-
-                        30
-
-                    </div>
+            </div>
 
 
-                    <div class="timer-controls">
+            <button
+                type="button"
+                id="continueFit30"
+                class="continue-fit30"
+                onclick="continueToFit30()">
 
-                        <button
-                            type="button"
-                            class="timer-btn primary"
-                            onclick="startTimer()">
+                Continue to Fit30 →
 
-                            ▶ Start
+            </button>
 
-                        </button>
+        </div>
 
+    </div>
 
-                        <button
-                            type="button"
-                            class="timer-btn"
-                            onclick="pauseTimer()">
-
-                            ⏸ Pause
-
-                        </button>
+</section>
 
 
-                        <button
-                            type="button"
-                            class="timer-btn"
-                            onclick="resetTimer()">
+<!-- =========================================================
+     HOME
+========================================================= -->
 
-                            ↻ Restart
+<section
+    id="homeScreen"
+    class="screen">
 
-                        </button>
+    <div class="hero">
 
-                    </div>
+        <h1>
+            Your
+            <span class="gradient">
+                30-day
+            </span>
+            challenge
+        </h1>
+
+        <p>
+            Work out every day, track your progress,
+            monitor your hydration and build
+            a more active routine.
+        </p>
+
+    </div>
 
 
-                    <div class="calorie-big">
+    <div class="dashboard">
 
-                        Estimated Burn
+        <div class="stat-card">
 
-                        <strong>
+            <div class="stat-icon">
+                🔥
+            </div>
 
-                            <span id="timerCalories">
-                                0
+            <small>
+                Calories
+            </small>
+
+            <strong id="totalCalories">
+                0 kcal
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <small>
+                Exercises
+            </small>
+
+            <strong id="totalExercises">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📅
+            </div>
+
+            <small>
+                Completed days
+            </small>
+
+            <strong id="completedDays">
+                0/30
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💧
+            </div>
+
+            <small>
+                Water today
+            </small>
+
+            <strong id="waterDashboard">
+                0 ml
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="water-card">
+
+        <div class="water-top">
+
+            <div class="water-title">
+
+                <span>
+                    💧
+                </span>
+
+                <div>
+
+                    <h2>
+                        Water tracker
+                    </h2>
+
+                    <small>
+                        Track your daily hydration
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="water-counter">
+
+                <span id="waterAmount">
+                    0
+                </span>
+
+                ml
+
+            </div>
+
+        </div>
+
+
+        <div class="water-bar">
+
+            <div
+                class="water-progress"
+                id="waterProgress">
+            </div>
+
+        </div>
+
+
+        <div class="water-buttons">
+
+            <button
+                type="button"
+                class="btn-water"
+                onclick="addWater(250)">
+
+                +250 ml
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-water"
+                onclick="addWater(500)">
+
+                +500 ml
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-water"
+                onclick="removeWater()">
+
+                −250 ml
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-water"
+                onclick="resetWater()">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-box">
+
+        <div class="progress-header">
+
+            <strong>
+                Challenge progress
+            </strong>
+
+            <span id="progressText">
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="mainProgress">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+        🗓️ 30-Day Challenge
+    </h2>
+
+    <div
+        class="days"
+        id="daysContainer">
+    </div>
+
+
+    <h2 class="section-title">
+        🏋️ Categories
+    </h2>
+
+    <div class="categories">
+
+        <button
+            type="button"
+            class="category active"
+            onclick="filterCategory('Todos', this)">
+
+            <div class="category-icon">
+                🔥
+            </div>
+
+            All
+
+            <small>
+                30 exercises
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category"
+            onclick="filterCategory('Aquecimento', this)">
+
+            <div class="category-icon">
+                🏃
+            </div>
+
+            Warm-up
+
+            <small>
+                5 exercises
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category"
+            onclick="filterCategory('Pernas e Glúteos', this)">
+
+            <div class="category-icon">
+                🦵
+            </div>
+
+            Legs
+
+            <small>
+                10 exercises
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category"
+            onclick="filterCategory('Abdômen', this)">
+
+            <div class="category-icon">
+                💪
+            </div>
+
+            Abs
+
+            <small>
+                7 exercises
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category"
+            onclick="filterCategory('Cardio', this)">
+
+            <div class="category-icon">
+                ❤️
+            </div>
+
+            Cardio
+
+            <small>
+                5 exercises
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category"
+            onclick="filterCategory('Corpo inteiro', this)">
+
+            <div class="category-icon">
+                ⚡
+            </div>
+
+            Full Body
+
+            <small>
+                3 exercises
+            </small>
+
+        </button>
+
+    </div>
+
+
+    <h2 class="section-title">
+        Exercises
+    </h2>
+
+    <div
+        class="exercise-grid"
+        id="exerciseGrid">
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXERCISE SCREEN
+========================================================= -->
+
+<section
+    id="exerciseScreen"
+    class="screen">
+
+    <button
+        type="button"
+        class="back-button"
+        onclick="goHome()">
+
+        ← Back to Home
+
+    </button>
+
+
+    <div class="workout-layout">
+
+        <div>
+
+            <div class="workout-media">
+
+                <div id="workoutGifContainer">
+
+                    <div class="gif-placeholder large">
+
+                        <div>
+
+                            <strong>
+                                Exercise GIF
+                            </strong>
+
+                            <span>
+                                Add the GIF URL
+                                in the exercicios.js file
                             </span>
 
-                            kcal
-
-                        </strong>
+                        </div>
 
                     </div>
 
                 </div>
 
-
-                <div class="timer-box rest-box">
-
-                    <div class="timer-status">
-
-                        😴 REST TIME
-
-                    </div>
+            </div>
 
 
-                    <div
-                        id="restTimer"
-                        class="rest-number">
+            <div class="workout-info">
 
-                        20
+                <h1 id="workoutName">
+                    Exercise
+                </h1>
 
-                    </div>
+                <p id="workoutDescription">
+                    Description
+                </p>
 
+
+                <div class="exercise-meta">
+
+                    <span
+                        class="badge"
+                        id="workoutCategory">
+
+                        Category
+
+                    </span>
+
+
+                    <span class="badge">
+
+                        🔥
+
+                        <span id="workoutCalories">
+                            0
+                        </span>
+
+                        kcal
+
+                    </span>
+
+
+                    <span class="badge">
+
+                        ⏱️
+
+                        <span id="workoutDuration">
+                            30
+                        </span>
+
+                        s
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div class="timer-box">
+
+                <div
+                    class="timer-status"
+                    id="timerStatus">
+
+                    EXERCISE TIME
+
+                </div>
+
+
+                <div
+                    class="timer work"
+                    id="timer">
+
+                    30
+
+                </div>
+
+
+                <div class="timer-controls">
 
                     <button
                         type="button"
                         class="timer-btn primary"
-                        onclick="startRest()">
+                        onclick="startTimer()">
 
-                        Start Rest
+                        ▶ Start
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="timer-btn"
+                        onclick="pauseTimer()">
+
+                        ⏸ Pause
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="timer-btn"
+                        onclick="resetTimer()">
+
+                        ↻ Restart
 
                     </button>
 
                 </div>
 
 
+                <div class="calorie-big">
+
+                    Estimated Burn
+
+                    <strong>
+
+                        <span id="timerCalories">
+                            0
+                        </span>
+
+                        kcal
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="timer-box rest-box">
+
+                <div class="timer-status">
+
+                    😴 REST TIME
+
+                </div>
+
+
+                <div
+                    id="restTimer"
+                    class="rest-number">
+
+                    20
+
+                </div>
+
+
                 <button
                     type="button"
-                    id="completeButton"
-                    class="exercise-button complete-button"
-                    onclick="completeCurrentExercise()">
+                    class="timer-btn primary"
+                    onclick="startRest()">
 
-                    ✅ Mark exercise as completed
+                    Start Rest
 
                 </button>
 
             </div>
 
+
+            <button
+                type="button"
+                id="completeButton"
+                class="exercise-button complete-button"
+                onclick="completeCurrentExercise()">
+
+                ✅ Mark exercise as completed
+
+            </button>
+
         </div>
 
-    </section>
-
-
-    <!-- =========================
-         TOAST
-    ========================== -->
-
-    <div
-        class="toast"
-        id="toast">
-
-        Exercise completed! 🎉
-
     </div>
+
+</section>
+
+
+<div
+    class="toast"
+    id="toast">
+
+    Exercise completed! 🎉
+
+</div>
 
 </div>
 
 
-<!-- =========================
-     EXERCISE JAVASCRIPT
-========================== -->
-
 <script src="exercicios.js"></script>
 
-
-<!-- =========================
-     PROFILE + BMI JAVASCRIPT
-========================== -->
 
 <script>
 
 (function () {
 
-    window.selectProfile = function(profile) {
 
-        localStorage.setItem("fit30_profile", profile);
+/* =========================================================
+   SELECT PROFILE
+========================================================= */
 
-        const profileScreen =
-            document.getElementById("profileScreen");
+window.selectProfile = function(profile) {
 
-        const profileDataScreen =
-            document.getElementById("profileDataScreen");
+    localStorage.setItem(
+        "fit30_profile",
+        profile
+    );
 
-        const homeScreen =
-            document.getElementById("homeScreen");
 
-        const exerciseScreen =
-            document.getElementById("exerciseScreen");
+    const profileScreen =
+        document.getElementById("profileScreen");
 
-        const headerProfile =
-            document.getElementById("headerProfile");
+    const profileDataScreen =
+        document.getElementById("profileDataScreen");
 
-        const profileBigIcon =
-            document.getElementById("profileBigIcon");
+    const homeScreen =
+        document.getElementById("homeScreen");
 
-        const profileDataTitle =
-            document.getElementById("profileDataTitle");
+    const exerciseScreen =
+        document.getElementById("exerciseScreen");
 
-        const profileDataSubtitle =
-            document.getElementById("profileDataSubtitle");
+    const headerProfile =
+        document.getElementById("headerProfile");
 
+    const profileBigIcon =
+        document.getElementById("profileBigIcon");
 
-        if (!profileScreen || !profileDataScreen) {
-            console.error("Fit30 profile screens were not found.");
-            return;
-        }
+    const profileDataTitle =
+        document.getElementById("profileDataTitle");
 
+    const profileDataSubtitle =
+        document.getElementById("profileDataSubtitle");
 
-        if (profileScreen) {
-            profileScreen.classList.remove("active");
-        }
 
-        if (homeScreen) {
-            homeScreen.classList.remove("active");
-        }
+    if (!profileScreen || !profileDataScreen) {
 
-        if (exerciseScreen) {
-            exerciseScreen.classList.remove("active");
-        }
-
-        profileDataScreen.classList.add("active");
-
-
-        if (profile === "mulher") {
-
-            if (profileBigIcon) {
-                profileBigIcon.textContent = "👩";
-            }
-
-            if (profileDataTitle) {
-                profileDataTitle.textContent =
-                    "Your profile";
-            }
-
-            if (profileDataSubtitle) {
-                profileDataSubtitle.textContent =
-                    "Enter your information to personalize Fit30.";
-            }
-
-            if (headerProfile) {
-                headerProfile.textContent =
-                    "Woman profile";
-            }
-
-        }
-
-
-        else if (profile === "homem") {
-
-            if (profileBigIcon) {
-                profileBigIcon.textContent = "👨";
-            }
-
-            if (profileDataTitle) {
-                profileDataTitle.textContent =
-                    "Your profile";
-            }
-
-            if (profileDataSubtitle) {
-                profileDataSubtitle.textContent =
-                    "Enter your information to personalize Fit30.";
-            }
-
-            if (headerProfile) {
-                headerProfile.textContent =
-                    "Man profile";
-            }
-
-        }
-
-
-        const bmiResult =
-            document.getElementById("bmiResult");
-
-        const bmiError =
-            document.getElementById("bmiError");
-
-        if (bmiResult) {
-            bmiResult.classList.remove("show");
-        }
-
-        if (bmiError) {
-            bmiError.textContent = "";
-        }
-
-    };
-
-
-    window.backToProfileSelection = function () {
-
-        const profileScreen =
-            document.getElementById("profileScreen");
-
-        const profileDataScreen =
-            document.getElementById("profileDataScreen");
-
-        const homeScreen =
-            document.getElementById("homeScreen");
-
-        const exerciseScreen =
-            document.getElementById("exerciseScreen");
-
-
-        if (profileDataScreen) {
-            profileDataScreen.classList.remove("active");
-        }
-
-        if (homeScreen) {
-            homeScreen.classList.remove("active");
-        }
-
-        if (exerciseScreen) {
-            exerciseScreen.classList.remove("active");
-        }
-
-        if (profileScreen) {
-            profileScreen.classList.add("active");
-        }
-
-    };
-
-
-    window.calculateBMI = function () {
-
-        const ageInput =
-            document.getElementById("bmiAge");
-
-        const weightInput =
-            document.getElementById("bmiWeight");
-
-        const heightInput =
-            document.getElementById("bmiHeight");
-
-        const error =
-            document.getElementById("bmiError");
-
-        const result =
-            document.getElementById("bmiResult");
-
-        const bmiNumber =
-            document.getElementById("bmiNumber");
-
-        const classification =
-            document.getElementById("bmiClassification");
-
-        const message =
-            document.getElementById("bmiMessage");
-
-        const currentWeightDisplay =
-            document.getElementById("currentWeightDisplay");
-
-        const targetWeight =
-            document.getElementById("bmiTargetWeight");
-
-        const weightDifference =
-            document.getElementById("bmiWeightDifference");
-
-        const weightSummary =
-            document.getElementById("weightSummary");
-
-        const targetWeightBox =
-            document.getElementById("targetWeightBox");
-
-        const weightDifferenceBox =
-            document.getElementById("weightDifferenceBox");
-
-        const goalBox =
-            document.getElementById("goalBox");
-
-        const bmiNotice =
-            document.getElementById("bmiNotice");
-
-        const continueButton =
-            document.getElementById("continueFit30");
-
-        const marker =
-            document.getElementById("bmiMarker");
-
-
-        const age =
-            Number(ageInput.value);
-
-        const weight =
-            Number(weightInput.value);
-
-        const heightCm =
-            Number(heightInput.value);
-
-
-        if (
-            !age ||
-            !weight ||
-            !heightCm ||
-            age < 1 ||
-            age > 120 ||
-            weight <= 0 ||
-            heightCm < 50 ||
-            heightCm > 250
-        ) {
-
-            error.textContent =
-                "Please enter a valid age, weight and height.";
-
-            result.classList.remove("show");
-
-            return;
-        }
-
-
-        error.textContent = "";
-
-
-        localStorage.setItem(
-            "fit30_age",
-            age
+        console.error(
+            "Fit30 profile screens were not found."
         );
 
-        localStorage.setItem(
-            "fit30_weight",
-            weight
-        );
-
-        localStorage.setItem(
-            "fit30_height",
-            heightCm
-        );
+        return;
+    }
 
 
-        const heightMeters =
-            heightCm / 100;
+    if (profileScreen) {
+        profileScreen.classList.remove("active");
+    }
+
+    if (homeScreen) {
+        homeScreen.classList.remove("active");
+    }
+
+    if (exerciseScreen) {
+        exerciseScreen.classList.remove("active");
+    }
 
 
-        const bmi =
-            weight /
+    profileDataScreen.classList.add("active");
+
+
+    /* Selection visual effect */
+
+    document
+        .querySelectorAll(".profile-option")
+        .forEach(function(button) {
+
+            button.classList.remove("selected");
+
+        });
+
+
+    if (profile === "mulher") {
+
+        const female =
+            document.getElementById("femaleProfile");
+
+        if (female) {
+            female.classList.add("selected");
+        }
+
+
+        if (profileBigIcon) {
+            profileBigIcon.textContent = "👩";
+        }
+
+        if (profileDataTitle) {
+            profileDataTitle.textContent =
+                "Your profile";
+        }
+
+        if (profileDataSubtitle) {
+            profileDataSubtitle.textContent =
+                "Enter your information to personalize Fit30.";
+        }
+
+        if (headerProfile) {
+            headerProfile.textContent =
+                "Woman profile";
+        }
+
+    }
+
+
+    else if (profile === "homem") {
+
+        const male =
+            document.getElementById("maleProfile");
+
+        if (male) {
+            male.classList.add("selected");
+        }
+
+
+        if (profileBigIcon) {
+            profileBigIcon.textContent = "👨";
+        }
+
+        if (profileDataTitle) {
+            profileDataTitle.textContent =
+                "Your profile";
+        }
+
+        if (profileDataSubtitle) {
+            profileDataSubtitle.textContent =
+                "Enter your information to personalize Fit30.";
+        }
+
+        if (headerProfile) {
+            headerProfile.textContent =
+                "Man profile";
+        }
+
+    }
+
+
+    const bmiResult =
+        document.getElementById("bmiResult");
+
+    const bmiError =
+        document.getElementById("bmiError");
+
+
+    if (bmiResult) {
+        bmiResult.classList.remove("show");
+    }
+
+    if (bmiError) {
+        bmiError.textContent = "";
+    }
+
+};
+
+
+/* =========================================================
+   BACK TO PROFILE SELECTION
+========================================================= */
+
+window.backToProfileSelection = function() {
+
+    const profileScreen =
+        document.getElementById("profileScreen");
+
+    const profileDataScreen =
+        document.getElementById("profileDataScreen");
+
+    const homeScreen =
+        document.getElementById("homeScreen");
+
+    const exerciseScreen =
+        document.getElementById("exerciseScreen");
+
+
+    if (profileDataScreen) {
+        profileDataScreen.classList.remove("active");
+    }
+
+    if (homeScreen) {
+        homeScreen.classList.remove("active");
+    }
+
+    if (exerciseScreen) {
+        exerciseScreen.classList.remove("active");
+    }
+
+    if (profileScreen) {
+        profileScreen.classList.add("active");
+    }
+
+
+    /*
+     * When going back, the user can choose
+     * Woman or Man again.
+     */
+
+    document
+        .querySelectorAll(".profile-option")
+        .forEach(function(button) {
+
+            button.classList.remove("selected");
+
+        });
+
+
+    const headerProfile =
+        document.getElementById("headerProfile");
+
+    if (headerProfile) {
+        headerProfile.textContent =
+            "Choose your profile";
+    }
+
+};
+
+
+/* =========================================================
+   BMI
+========================================================= */
+
+window.calculateBMI = function() {
+
+    const ageInput =
+        document.getElementById("bmiAge");
+
+    const weightInput =
+        document.getElementById("bmiWeight");
+
+    const heightInput =
+        document.getElementById("bmiHeight");
+
+    const error =
+        document.getElementById("bmiError");
+
+    const result =
+        document.getElementById("bmiResult");
+
+    const bmiNumber =
+        document.getElementById("bmiNumber");
+
+    const classification =
+        document.getElementById("bmiClassification");
+
+    const message =
+        document.getElementById("bmiMessage");
+
+    const currentWeightDisplay =
+        document.getElementById("currentWeightDisplay");
+
+    const targetWeight =
+        document.getElementById("bmiTargetWeight");
+
+    const weightDifference =
+        document.getElementById("bmiWeightDifference");
+
+    const weightSummary =
+        document.getElementById("weightSummary");
+
+    const targetWeightBox =
+        document.getElementById("targetWeightBox");
+
+    const weightDifferenceBox =
+        document.getElementById("weightDifferenceBox");
+
+    const goalBox =
+        document.getElementById("goalBox");
+
+    const bmiNotice =
+        document.getElementById("bmiNotice");
+
+    const continueButton =
+        document.getElementById("continueFit30");
+
+    const marker =
+        document.getElementById("bmiMarker");
+
+
+    const age =
+        Number(ageInput.value);
+
+    const weight =
+        Number(weightInput.value);
+
+    const heightCm =
+        Number(heightInput.value);
+
+
+    if (
+        !age ||
+        !weight ||
+        !heightCm ||
+        age < 1 ||
+        age > 120 ||
+        weight <= 0 ||
+        heightCm < 50 ||
+        heightCm > 250
+    ) {
+
+        error.textContent =
+            "Please enter a valid age, weight and height.";
+
+        result.classList.remove("show");
+
+        return;
+    }
+
+
+    error.textContent = "";
+
+
+    localStorage.setItem(
+        "fit30_age",
+        age
+    );
+
+    localStorage.setItem(
+        "fit30_weight",
+        weight
+    );
+
+    localStorage.setItem(
+        "fit30_height",
+        heightCm
+    );
+
+
+    const heightMeters =
+        heightCm / 100;
+
+
+    const bmi =
+        weight /
+        (heightMeters * heightMeters);
+
+
+    const roundedBMI =
+        bmi.toFixed(1);
+
+
+    bmiNumber.textContent =
+        roundedBMI;
+
+    currentWeightDisplay.textContent =
+        weight.toFixed(1) + " kg";
+
+
+    let classificationText = "";
+    let messageText = "";
+
+
+    if (bmi < 18.5) {
+
+        classificationText =
+            "Underweight";
+
+        messageText =
+            "Your BMI is below the adult reference range.";
+
+    }
+
+    else if (bmi < 25) {
+
+        classificationText =
+            "Normal range";
+
+        messageText =
+            "Your BMI is within the adult reference range.";
+
+    }
+
+    else if (bmi < 30) {
+
+        classificationText =
+            "Overweight";
+
+        messageText =
+            "Your BMI is above the adult reference range.";
+
+    }
+
+    else {
+
+        classificationText =
+            "Obesity";
+
+        messageText =
+            "Your BMI is above the adult reference range.";
+
+    }
+
+
+    classification.textContent =
+        classificationText;
+
+
+    if (marker) {
+
+        let percentage =
+            ((bmi - 15) / 25) * 100;
+
+        percentage =
+            Math.max(
+                2,
+                Math.min(
+                    98,
+                    percentage
+                )
+            );
+
+        marker.style.left =
+            percentage + "%";
+    }
+
+
+    /*
+     * UNDER 18
+     */
+
+    if (age < 18) {
+
+        classification.textContent =
+            "BMI screening value";
+
+        message.textContent =
+            "For people under 18, BMI should be interpreted using age- and sex-specific growth charts.";
+
+
+        if (weightSummary) {
+            weightSummary.style.display =
+                "none";
+        }
+
+        if (goalBox) {
+            goalBox.style.display =
+                "none";
+        }
+
+        if (targetWeightBox) {
+            targetWeightBox.style.display =
+                "none";
+        }
+
+        if (weightDifferenceBox) {
+            weightDifferenceBox.style.display =
+                "none";
+        }
+
+        if (bmiNotice) {
+            bmiNotice.style.display =
+                "block";
+        }
+
+    }
+
+
+    /*
+     * 18+
+     */
+
+    else {
+
+        if (weightSummary) {
+            weightSummary.style.display =
+                "grid";
+        }
+
+        if (targetWeightBox) {
+            targetWeightBox.style.display =
+                "flex";
+        }
+
+        if (weightDifferenceBox) {
+            weightDifferenceBox.style.display =
+                "flex";
+        }
+
+        if (goalBox) {
+            goalBox.style.display =
+                "block";
+        }
+
+        if (bmiNotice) {
+            bmiNotice.style.display =
+                "none";
+        }
+
+
+        const referenceBMI =
+            24.9;
+
+
+        const calculatedTargetWeight =
+            referenceBMI *
             (heightMeters * heightMeters);
 
 
-        const roundedBMI =
-            bmi.toFixed(1);
+        const difference =
+            weight -
+            calculatedTargetWeight;
 
 
-        bmiNumber.textContent =
-            roundedBMI;
-
-        currentWeightDisplay.textContent =
-            weight.toFixed(1) + " kg";
+        targetWeight.textContent =
+            calculatedTargetWeight.toFixed(1) +
+            " kg";
 
 
-        let classificationText = "";
-        let messageText = "";
+        if (difference > 0) {
 
-
-        if (bmi < 18.5) {
-
-            classificationText =
-                "Underweight";
-
-            messageText =
-                "Your BMI is below the adult reference range.";
-
-        }
-
-        else if (bmi < 25) {
-
-            classificationText =
-                "Normal range";
-
-            messageText =
-                "Your BMI is within the adult reference range.";
-
-        }
-
-        else if (bmi < 30) {
-
-            classificationText =
-                "Overweight";
-
-            messageText =
-                "Your BMI is above the adult reference range.";
-
-        }
-
-        else {
-
-            classificationText =
-                "Obesity";
-
-            messageText =
-                "Your BMI is above the adult reference range.";
-
-        }
-
-
-        classification.textContent =
-            classificationText;
-
-
-        if (marker) {
-
-            let percentage =
-                ((bmi - 15) / 25) * 100;
-
-            percentage =
-                Math.max(
-                    2,
-                    Math.min(
-                        98,
-                        percentage
-                    )
-                );
-
-            marker.style.left =
-                percentage + "%";
-        }
-
-
-        if (age < 18) {
-
-            classification.textContent =
-                "BMI screening value";
-
-            message.textContent =
-                "For people under 18, BMI should be interpreted using age- and sex-specific growth charts.";
-
-            if (weightSummary) {
-                weightSummary.style.display = "none";
-            }
-
-            if (goalBox) {
-                goalBox.style.display = "none";
-            }
-
-            if (targetWeightBox) {
-                targetWeightBox.style.display = "none";
-            }
-
-            if (weightDifferenceBox) {
-                weightDifferenceBox.style.display = "none";
-            }
-
-            if (bmiNotice) {
-                bmiNotice.style.display = "block";
-            }
-
-        }
-
-
-        else {
-
-            if (weightSummary) {
-                weightSummary.style.display = "grid";
-            }
-
-            if (targetWeightBox) {
-                targetWeightBox.style.display = "flex";
-            }
-
-            if (weightDifferenceBox) {
-                weightDifferenceBox.style.display = "flex";
-            }
-
-            if (goalBox) {
-                goalBox.style.display = "block";
-            }
-
-            if (bmiNotice) {
-                bmiNotice.style.display = "none";
-            }
-
-
-            const referenceBMI = 24.9;
-
-            const calculatedTargetWeight =
-                referenceBMI *
-                (heightMeters * heightMeters);
-
-
-            const difference =
-                weight -
-                calculatedTargetWeight;
-
-
-            targetWeight.textContent =
-                calculatedTargetWeight.toFixed(1) +
+            weightDifference.textContent =
+                difference.toFixed(1) +
                 " kg";
 
+        }
 
-            if (difference > 0) {
+        else if (difference < 0) {
 
-                weightDifference.textContent =
-                    difference.toFixed(1) +
-                    " kg";
+            weightDifference.textContent =
+                Math.abs(
+                    difference
+                ).toFixed(1) +
+                " kg";
 
-            }
+        }
 
-            else if (difference < 0) {
+        else {
 
-                weightDifference.textContent =
-                    Math.abs(difference).toFixed(1) +
-                    " kg";
+            weightDifference.textContent =
+                "0 kg";
 
-            }
-
-            else {
-
-                weightDifference.textContent =
-                    "0 kg";
-
-            }
+        }
 
 
-            const monthlyGoalValue =
-                Math.min(
-                    Math.max(
-                        difference,
-                        0
-                    ),
-                    2
-                );
+        const monthlyGoalValue =
+            Math.min(
+                Math.max(
+                    difference,
+                    0
+                ),
+                2
+            );
 
 
-            if (monthlyGoalValue > 0) {
+        if (monthlyGoalValue > 0) {
 
-                document.getElementById(
-                    "monthlyGoal"
-                ).textContent =
-                    monthlyGoalValue.toFixed(1) +
-                    " kg/month";
-
-
-                const estimatedMonths =
-                    difference /
-                    monthlyGoalValue;
+            document.getElementById(
+                "monthlyGoal"
+            ).textContent =
+                monthlyGoalValue.toFixed(1) +
+                " kg/month";
 
 
-                if (estimatedMonths <= 1) {
+            const estimatedMonths =
+                difference /
+                monthlyGoalValue;
 
-                    document.getElementById(
-                        "estimatedTime"
-                    ).textContent =
-                        "About 1 month";
 
-                }
-
-                else {
-
-                    document.getElementById(
-                        "estimatedTime"
-                    ).textContent =
-                        "About " +
-                        Math.ceil(estimatedMonths) +
-                        " months";
-
-                }
-
-            }
-
-            else {
-
-                document.getElementById(
-                    "monthlyGoal"
-                ).textContent =
-                    "No target set";
-
+            if (estimatedMonths <= 1) {
 
                 document.getElementById(
                     "estimatedTime"
                 ).textContent =
-                    "—";
+                    "About 1 month";
+
+            }
+
+            else {
+
+                document.getElementById(
+                    "estimatedTime"
+                ).textContent =
+                    "About " +
+                    Math.ceil(
+                        estimatedMonths
+                    ) +
+                    " months";
 
             }
 
         }
 
+        else {
 
-        if (message) {
-            message.textContent =
-                messageText;
+            document.getElementById(
+                "monthlyGoal"
+            ).textContent =
+                "No target set";
+
+
+            document.getElementById(
+                "estimatedTime"
+            ).textContent =
+                "—";
+
         }
 
+    }
 
-        result.classList.add("show");
+
+    if (message) {
+        message.textContent =
+            messageText;
+    }
 
 
-        if (continueButton) {
-            continueButton.style.display =
-                "block";
+    result.classList.add("show");
+
+
+    if (continueButton) {
+        continueButton.style.display =
+            "block";
+    }
+
+};
+
+
+/* =========================================================
+   CONTINUE TO FIT30
+========================================================= */
+
+window.continueToFit30 = function() {
+
+    const age =
+        Number(
+            localStorage.getItem(
+                "fit30_age"
+            )
+        );
+
+    const weight =
+        Number(
+            localStorage.getItem(
+                "fit30_weight"
+            )
+        );
+
+    const height =
+        Number(
+            localStorage.getItem(
+                "fit30_height"
+            )
+        );
+
+
+    if (
+        !age ||
+        !weight ||
+        !height
+    ) {
+
+        const error =
+            document.getElementById(
+                "bmiError"
+            );
+
+        if (error) {
+
+            error.textContent =
+                "Please calculate your BMI before continuing.";
+
         }
 
-    };
+        return;
+    }
 
 
-    window.continueToFit30 = function () {
+    const profile =
+        localStorage.getItem(
+            "fit30_profile"
+        );
 
-        const age =
-            Number(
-                localStorage.getItem("fit30_age")
+
+    /*
+     * Make sure a profile was actually selected.
+     */
+
+    if (
+        profile !== "mulher" &&
+        profile !== "homem"
+    ) {
+
+        const error =
+            document.getElementById(
+                "bmiError"
             );
 
-        const weight =
-            Number(
-                localStorage.getItem("fit30_weight")
-            );
+        if (error) {
 
-        const height =
-            Number(
-                localStorage.getItem("fit30_height")
-            );
+            error.textContent =
+                "Please choose your profile first.";
 
+        }
+
+        return;
+    }
+
+
+    const profileDataScreen =
+        document.getElementById(
+            "profileDataScreen"
+        );
+
+    const profileScreen =
+        document.getElementById(
+            "profileScreen"
+        );
+
+    const homeScreen =
+        document.getElementById(
+            "homeScreen"
+        );
+
+    const exerciseScreen =
+        document.getElementById(
+            "exerciseScreen"
+        );
+
+    const headerProfile =
+        document.getElementById(
+            "headerProfile"
+        );
+
+
+    if (profileScreen) {
+        profileScreen.classList.remove(
+            "active"
+        );
+    }
+
+    if (profileDataScreen) {
+        profileDataScreen.classList.remove(
+            "active"
+        );
+    }
+
+    if (exerciseScreen) {
+        exerciseScreen.classList.remove(
+            "active"
+        );
+    }
+
+    if (homeScreen) {
+        homeScreen.classList.add(
+            "active"
+        );
+    }
+
+
+    if (headerProfile) {
+
+        if (profile === "mulher") {
+
+            headerProfile.textContent =
+                "Woman profile";
+
+        }
+
+        else if (profile === "homem") {
+
+            headerProfile.textContent =
+                "Man profile";
+
+        }
+
+        else {
+
+            headerProfile.textContent =
+                "Fit30 profile";
+
+        }
+
+    }
+
+
+    try {
 
         if (
-            !age ||
-            !weight ||
-            !height
+            typeof updateDashboard ===
+            "function"
         ) {
 
-            const error =
-                document.getElementById("bmiError");
+            updateDashboard();
 
-            if (error) {
-
-                error.textContent =
-                    "Please calculate your BMI before continuing.";
-
-            }
-
-            return;
         }
 
+    }
 
-        const profileDataScreen =
-            document.getElementById(
-                "profileDataScreen"
-            );
+    catch (e) {
+
+        console.log(
+            "Dashboard initialization skipped."
+        );
+
+    }
+
+
+    try {
+
+        if (
+            typeof renderDays ===
+            "function"
+        ) {
+
+            renderDays();
+
+        }
+
+    }
+
+    catch (e) {
+
+        console.log(
+            "Days initialization skipped."
+        );
+
+    }
+
+
+    try {
+
+        if (
+            typeof renderExercises ===
+            "function"
+        ) {
+
+            renderExercises();
+
+        }
+
+    }
+
+    catch (e) {
+
+        console.log(
+            "Exercise initialization skipped."
+        );
+
+    }
+
+
+    try {
+
+        if (
+            typeof updateWaterUI ===
+            "function"
+        ) {
+
+            updateWaterUI();
+
+        }
+
+    }
+
+    catch (e) {
+
+        console.log(
+            "Water initialization skipped."
+        );
+
+    }
+
+};
+
+
+/* =========================================================
+   INITIAL PAGE LOAD
+   IMPORTANT:
+   ALWAYS START WITH PROFILE SELECTION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        /*
+         * FORCE THE PROFILE SELECTION SCREEN
+         */
 
         const profileScreen =
             document.getElementById(
                 "profileScreen"
+            );
+
+        const profileDataScreen =
+            document.getElementById(
+                "profileDataScreen"
             );
 
         const homeScreen =
@@ -4675,214 +4562,153 @@
             );
 
 
+        /*
+         * Profile selection is ALWAYS
+         * the first screen.
+         */
+
         if (profileScreen) {
-            profileScreen.classList.remove("active");
-        }
 
-        if (profileDataScreen) {
-            profileDataScreen.classList.remove("active");
-        }
-
-        if (exerciseScreen) {
-            exerciseScreen.classList.remove("active");
-        }
-
-        if (homeScreen) {
-            homeScreen.classList.add("active");
-        }
-
-
-        const profile =
-            localStorage.getItem(
-                "fit30_profile"
+            profileScreen.classList.add(
+                "active"
             );
 
+        }
+
+
+        if (profileDataScreen) {
+
+            profileDataScreen.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        if (homeScreen) {
+
+            homeScreen.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        if (exerciseScreen) {
+
+            exerciseScreen.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        /*
+         * IMPORTANT:
+         * Do NOT read fit30_profile here.
+         *
+         * This prevents the site from opening
+         * automatically as Woman or Man.
+         */
 
         if (headerProfile) {
 
-            if (profile === "mulher") {
-
-                headerProfile.textContent =
-                    "Woman profile";
-
-            }
-
-            else if (profile === "homem") {
-
-                headerProfile.textContent =
-                    "Man profile";
-
-            }
-
-            else {
-
-                headerProfile.textContent =
-                    "Fit30 profile";
-
-            }
+            headerProfile.textContent =
+                "Choose your profile";
 
         }
 
 
-        try {
+        /*
+         * We can keep the saved BMI information,
+         * but we DO NOT restore the profile.
+         */
 
-            if (
-                typeof updateDashboard ===
-                "function"
-            ) {
-                updateDashboard();
-            }
-
-        } catch (e) {
-            console.log(
-                "Dashboard initialization skipped."
+        const savedAge =
+            localStorage.getItem(
+                "fit30_age"
             );
-        }
 
-
-        try {
-
-            if (
-                typeof renderDays ===
-                "function"
-            ) {
-                renderDays();
-            }
-
-        } catch (e) {
-            console.log(
-                "Days initialization skipped."
+        const savedWeight =
+            localStorage.getItem(
+                "fit30_weight"
             );
-        }
 
-
-        try {
-
-            if (
-                typeof renderExercises ===
-                "function"
-            ) {
-                renderExercises();
-            }
-
-        } catch (e) {
-            console.log(
-                "Exercise initialization skipped."
+        const savedHeight =
+            localStorage.getItem(
+                "fit30_height"
             );
-        }
 
 
-        try {
+        if (savedAge) {
 
-            if (
-                typeof updateWaterUI ===
-                "function"
-            ) {
-                updateWaterUI();
-            }
-
-        } catch (e) {
-            console.log(
-                "Water initialization skipped."
-            );
-        }
-
-    };
-
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            const savedProfile =
-                localStorage.getItem(
-                    "fit30_profile"
-                );
-
-
-            const savedAge =
-                localStorage.getItem(
-                    "fit30_age"
-                );
-
-
-            const savedWeight =
-                localStorage.getItem(
-                    "fit30_weight"
-                );
-
-
-            const savedHeight =
-                localStorage.getItem(
-                    "fit30_height"
-                );
-
-
-            if (savedAge) {
-
+            const ageInput =
                 document.getElementById(
                     "bmiAge"
-                ).value =
+                );
+
+            if (ageInput) {
+
+                ageInput.value =
                     savedAge;
 
             }
 
+        }
 
-            if (savedWeight) {
 
+        if (savedWeight) {
+
+            const weightInput =
                 document.getElementById(
                     "bmiWeight"
-                ).value =
+                );
+
+            if (weightInput) {
+
+                weightInput.value =
                     savedWeight;
 
             }
 
+        }
 
-            if (savedHeight) {
 
+        if (savedHeight) {
+
+            const heightInput =
                 document.getElementById(
                     "bmiHeight"
-                ).value =
+                );
+
+            if (heightInput) {
+
+                heightInput.value =
                     savedHeight;
 
             }
 
-
-            if (savedProfile === "mulher") {
-
-                const headerProfile =
-                    document.getElementById(
-                        "headerProfile"
-                    );
-
-                if (headerProfile) {
-
-                    headerProfile.textContent =
-                        "Woman profile";
-
-                }
-
-            }
-
-
-            if (savedProfile === "homem") {
-
-                const headerProfile =
-                    document.getElementById(
-                        "headerProfile"
-                    );
-
-                if (headerProfile) {
-
-                    headerProfile.textContent =
-                        "Man profile";
-
-                }
-
-            }
-
         }
-    );
+
+
+        /*
+         * Remove any previous selection effect.
+         */
+
+        document
+            .querySelectorAll(
+                ".profile-option"
+            )
+            .forEach(function(button) {
+
+                button.classList.remove(
+                    "selected"
+                );
+
+            });
+
+    }
+);
 
 })();
 
